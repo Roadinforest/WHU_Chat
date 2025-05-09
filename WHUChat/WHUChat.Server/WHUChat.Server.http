@@ -1,0 +1,6 @@
+@WHUChat.Server_HostAddress = http://localhost:5053
+
+GET {{WHUChat.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

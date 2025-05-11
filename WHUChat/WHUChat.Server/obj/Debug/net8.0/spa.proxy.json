@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:52090",
 "RedirectUrl": "",
 "LaunchCommand": "npm run dev",
-"WorkingDirectory": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\..\\whuchat.client",
+"WorkingDirectory": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\..\\whuchat.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

@@ -16,7 +16,12 @@ namespace WHUChat.Server.Services
         public void Register(RegisterRequestDto req)
         {
             if (req.Username == null || req.Password == null) throw new Exception("用户名和密码为必填项");
-            var user = new User { Username = req.Username, Password = BCrypt.Net.BCrypt.HashPassword(req.Password) };
+            var user = new User { 
+                Username = req.Username, 
+                Password = BCrypt.Net.BCrypt.HashPassword(req.Password),
+                AvatarUrl = "https://www.dummyimage.com/600x400/fff/000000&text=" + req.Username[0],
+                CreatedAt = DateTime.Now
+            };
             _repo.Add(user);
         }
 

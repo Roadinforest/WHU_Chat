@@ -19,7 +19,9 @@ namespace WHUChat.Server.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public ICollection<FriendRelation> Friends { get; set; } = new List<FriendRelation>();
+        public ICollection<FriendRelation> FriendsAdded { get; set; } = new List<FriendRelation>();  // 我加的好友
+        public ICollection<FriendRelation> FriendsWhoAddedMe { get; set; } = new List<FriendRelation>();  // 别人加我
+
         public ICollection<FriendRequest> SentRequests { get; set; } = new List<FriendRequest>();
         public ICollection<FriendRequest> ReceivedRequests { get; set; } = new List<FriendRequest>();
         public ICollection<RoomMember> RoomMemberships { get; set; } = new List<RoomMember>();

@@ -1,3 +1,5 @@
+using WHUChat.Server.Models;
+
 namespace WHUChat.Server.DTOs
 {
     public class FriendRelationDto

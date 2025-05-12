@@ -1,6 +1,32 @@
-﻿namespace WHUChat.Server.Services
+﻿using Microsoft.AspNetCore.Identity.Data;
+using System.IdentityModel.Tokens.Jwt;
+using WHUChat.Server.Models;
+using WHUChat.Server.Repositories;
+using WHUChat.Server.DTOs;
+using WHUChat.Server.Utils;
+using Microsoft.EntityFrameworkCore;
+
+namespace WHUChat.Server.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
+        private readonly IUserRepository _repo;
+        public UserService(IUserRepository repo) => _repo = repo;
+
+        public void Register(RegisterRequestDto req)
+        {
+            if (req.Username == null || req.Password == null) throw new Exception("用户名和密码为必填项");
+            var user = new User { Username = req.Username, Password = BCrypt.Net.BCrypt.HashPassword(req.Password) };
+            _repo.Add(user);
+        }
+
+        public string Login(LoginRequestDto req)
+        {
+            var user = _repo.GetByUsername(req.Username);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(req.Password, user.Password)) throw new Exception("用户名或密码错误");
+            return JwtHelper.GenerateToken(user);
+        }
+
+        public User GetById(int id) => _repo.GetById(id);
     }
 }

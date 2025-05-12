@@ -40,13 +40,20 @@ namespace WHUChat.Server.Data
                 }
             }
 
+            modelBuilder.Entity<FriendRequest>()
+                 .HasKey(fr => new { fr.SenderId, fr.ReceiverId });
 
-                // 配置 FriendRequest 之间的关系（用户发送和接收的好友请求）
-                modelBuilder.Entity<FriendRequest>()
-                .HasOne(fr => fr.Sender)  // 发送方（用户）
-                .WithMany(u => u.SentFriendRequests)  // 一个用户可以有多个发送的好友请求
-                .HasForeignKey(fr => fr.SenderId)  // 通过 SenderId 进行关联
-                .OnDelete(DeleteBehavior.Cascade);  // 发送方删除时，好友请求级联删除
+            // 显式配置枚举映射为字符串
+            modelBuilder.Entity<FriendRequest>()
+                .Property(fr => fr.Status)
+                .HasConversion<string>();
+
+            // 配置 FriendRequest 之间的关系（用户发送和接收的好友请求）
+            modelBuilder.Entity<FriendRequest>()
+            .HasOne(fr => fr.Sender)  // 发送方（用户）
+            .WithMany(u => u.SentFriendRequests)  // 一个用户可以有多个发送的好友请求
+            .HasForeignKey(fr => fr.SenderId)  // 通过 SenderId 进行关联
+            .OnDelete(DeleteBehavior.Cascade);  // 发送方删除时，好友请求级联删除
 
             modelBuilder.Entity<FriendRequest>()
                 .HasOne(fr => fr.Receiver)  // 接收方（用户）

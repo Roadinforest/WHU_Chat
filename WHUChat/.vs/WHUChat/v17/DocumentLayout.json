@@ -7,8 +7,8 @@
       "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|d:\\whu\\projects\\whu_chat\\whuchat\\whuchat.server\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|d:\\whu\\projects\\whu_chat\\whuchat\\whuchat.server\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,22 +28,22 @@
               "RelativeDocumentMoniker": "WHUChat.Server\\Controllers\\AuthController.cs",
               "ToolTip": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Controllers\\AuthController.cs",
               "RelativeToolTip": "WHUChat.Server\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T10:24:59.338Z",
+              "WhenOpened": "2025-05-12T12:47:43.356Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "WHUChat.Server\\Services\\UserService.cs",
-              "ToolTip": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Services\\UserService.cs",
-              "RelativeToolTip": "WHUChat.Server\\Services\\UserService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAzwBUAAABUAAAAAAAAAA==",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Controllers\\UserController.cs",
+              "RelativeToolTip": "WHUChat.Server\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T10:20:34.272Z",
+              "WhenOpened": "2025-05-12T12:47:40.121Z",
               "EditorCaption": ""
             }
           ]

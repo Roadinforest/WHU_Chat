@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WHUChat.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+732d27a260ea92bf3b747371c9ab39a50fd79c59")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+539b82ce93b765974020779fbe0d65e333b4443e")]
 [assembly: System.Reflection.AssemblyProductAttribute("WHUChat.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WHUChat.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

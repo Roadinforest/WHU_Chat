@@ -2,7 +2,6 @@
 {
     public class FriendRequest
     {
-        public long Id { get; set; }
         public long SenderId { get; set; }
         public long ReceiverId { get; set; }
         public FriendRequestStatus Status { get; set; }

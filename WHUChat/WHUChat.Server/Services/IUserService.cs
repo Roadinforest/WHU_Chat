@@ -9,5 +9,6 @@ namespace WHUChat.Server.Services
         void Register(RegisterRequestDto request);
         string Login(LoginRequestDto request);
         User GetById(int id);
+
     }
 }

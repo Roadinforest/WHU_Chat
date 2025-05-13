@@ -1,0 +1,102 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.log
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# Visual Studio working folder
+.vs/
+
+# DotCover
+*.dotCover
+
+# NuGet packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# MSBuild Binary and Log
+*.exe
+*.dll
+*.pdb
+*.mdb
+*.cache
+*.ilk
+*.log
+*.sbr
+*.tlh
+*.tli
+*.tmp
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+*.codecoverage
+
+# Publish output
+publish/
+out/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NCrunch
+*.ncrunch*
+.*crunch*.local.xml
+
+# StyleCop
+StyleCopReport.xml
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# DotTrace
+*.dotTrace
+
+# Azure Web App publish settings
+*.PublishSettings
+
+# Local history for Visual Studio
+.localhistory/
+
+# User secrets
+secrets.json
+
+# IIS Express
+/.vs/config/applicationhost.config
+
+# Entity Framework
+*.dbmdl
+*.jfm
+
+# Logs
+*.log
+
+# Backup & crash logs
+*.bak
+*.dmp

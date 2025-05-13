@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|d:\\whu\\projects\\whu_chat\\whuchat\\whuchat.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|d:\\whu\\projects\\whu_chat\\whuchat\\whuchat.server\\services\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\services\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -22,11 +26,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Program.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Program.cs",
+              "ToolTip": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Program.cs",
+              "RelativeToolTip": "WHUChat.Server\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvxIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T07:38:57.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "WHUChat.Server\\Services\\UserService.cs",
@@ -34,12 +51,11 @@
               "RelativeToolTip": "WHUChat.Server\\Services\\UserService.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAADwvxUAAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T06:26:45.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T06:26:45.83Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "RoomService.cs",
               "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Services\\RoomService.cs",
               "RelativeDocumentMoniker": "WHUChat.Server\\Services\\RoomService.cs",
@@ -52,7 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "RoomController.cs",
               "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Controllers\\RoomController.cs",
               "RelativeDocumentMoniker": "WHUChat.Server\\Controllers\\RoomController.cs",
@@ -60,8 +76,7 @@
               "RelativeToolTip": "WHUChat.Server\\Controllers\\RoomController.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAcwCsAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T06:25:53.908Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T06:25:53.908Z"
             }
           ]
         }

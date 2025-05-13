@@ -11,6 +11,18 @@ using WHUChat.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// 添加 CORS 服务
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("*") // 允许的前端地址（或 "*", 不建议上线使用）
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); // 如果前端携带了 cookie 或 token
+    });
+});
+
 // 添加控制器、SignalR、Swagger、AutoMapper
 builder.Services.AddControllers();
 builder.Services.AddSignalR();

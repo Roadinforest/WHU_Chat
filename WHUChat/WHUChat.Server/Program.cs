@@ -16,10 +16,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("*") // 允许的前端地址（或 "*", 不建议上线使用）
+        policy.WithOrigins("http://localhost:5173") // 前端的地址
               .AllowAnyHeader()
               .AllowAnyMethod()
-              .AllowCredentials(); // 如果前端携带了 cookie 或 token
+              .AllowCredentials();
     });
 });
 
@@ -109,11 +109,13 @@ if (app.Environment.IsDevelopment())
 
 // 中间件顺序：认证 → 授权
 app.UseRouting();
+
+app.UseCors("AllowFrontend");
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapFallbackToFile("/index.html");
 app.MapHub<ChatHub>("/chatHub");
 
 app.Run();

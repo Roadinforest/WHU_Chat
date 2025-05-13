@@ -1,23 +1,11 @@
 {
   "Version": 1,
-  "Hash": "2gyDiAhgWjktkQ2iRwVORf03ZMqVvipBppB9JE/0BVo=",
+  "Hash": "n8smfAt9LsaAxLG4Y0UtvCxBAnbpKyGizrDk/M9S3UU=",
   "Source": "WHUChat.Server",
   "BasePath": "_content/WHUChat.Server",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [
-    {
-      "Identity": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\whuchat.client\\whuchat.client.esproj",
-      "Version": 2,
-      "Source": "whuchat.client",
-      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
-      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
-    }
-  ],
+  "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
   "Assets": [],
   "Endpoints": []

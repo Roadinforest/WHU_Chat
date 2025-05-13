@@ -9,7 +9,13 @@
     <PackageJsonScriptsBuild Condition="$(PackageJsonScriptsBuild) == ''">vite build</PackageJsonScriptsBuild>
     <PackageJsonScriptsPreview Condition="$(PackageJsonScriptsPreview) == ''">vite preview</PackageJsonScriptsPreview>
     <PackageJsonScriptsLint Condition="$(PackageJsonScriptsLint) == ''">eslint . --fix</PackageJsonScriptsLint>
+    <PackageJsonDependenciesMicrosoftSignalr Condition="$(PackageJsonDependenciesMicrosoftSignalr) == ''">^8.0.7</PackageJsonDependenciesMicrosoftSignalr>
+    <PackageJsonDependenciesAxios Condition="$(PackageJsonDependenciesAxios) == ''">^1.9.0</PackageJsonDependenciesAxios>
+    <PackageJsonDependenciesElementPlus Condition="$(PackageJsonDependenciesElementPlus) == ''">^2.9.10</PackageJsonDependenciesElementPlus>
+    <PackageJsonDependenciesPinia Condition="$(PackageJsonDependenciesPinia) == ''">^3.0.2</PackageJsonDependenciesPinia>
     <PackageJsonDependenciesVue Condition="$(PackageJsonDependenciesVue) == ''">^3.5.13</PackageJsonDependenciesVue>
+    <PackageJsonDependenciesVueRouter Condition="$(PackageJsonDependenciesVueRouter) == ''">^4.5.1</PackageJsonDependenciesVueRouter>
+    <PackageJsonDependenciesWhuchatClient Condition="$(PackageJsonDependenciesWhuchatClient) == ''">file:</PackageJsonDependenciesWhuchatClient>
     <PackageJsonDevdependenciesEslintJs Condition="$(PackageJsonDevdependenciesEslintJs) == ''">^9.22.0</PackageJsonDevdependenciesEslintJs>
     <PackageJsonDevdependenciesVitejsPluginVue Condition="$(PackageJsonDevdependenciesVitejsPluginVue) == ''">^5.2.3</PackageJsonDevdependenciesVitejsPluginVue>
     <PackageJsonDevdependenciesEslint Condition="$(PackageJsonDevdependenciesEslint) == ''">^9.22.0</PackageJsonDevdependenciesEslint>

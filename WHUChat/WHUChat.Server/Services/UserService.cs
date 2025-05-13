@@ -32,6 +32,6 @@ namespace WHUChat.Server.Services
             return JwtHelper.GenerateToken(user);
         }
 
-        public User GetById(int id) => _repo.GetById(id);
+        public User GetById(long id) => _repo.GetById(id);
     }
 }

@@ -13,6 +13,6 @@ namespace WHUChat.Server.Repositories
 
         public User GetByUsername(string username) => _context.Users.FirstOrDefault(u => u.Username == username);
 
-        public User GetById(int id) => _context.Users.Find(id);
+        public User GetById(long id) => _context.Users.Find(id);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WHUChat.Server.Services;
-using WHUChat.Server.DTOs.FriendShip; // 引入 DTO 命名空间
+using WHUChat.Server.DTOs.FriendShip;
 using WHUChat.Server.Common;
 using System.Security.Claims; // 用于获取 User ID
 

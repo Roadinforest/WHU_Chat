@@ -6,6 +6,6 @@ namespace WHUChat.Server.Repositories
     {
         void Add(User user);
         User GetByUsername(string username);
-        User GetById(int id);
+        User GetById(long id);
     }
 }

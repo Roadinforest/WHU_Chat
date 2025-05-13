@@ -3,6 +3,7 @@
   <div class="auth-page">
     <el-card class="auth-card">
       <div class="auth-tabs">
+
         <el-tabs v-model="activeTab" stretch>
           <el-tab-pane label="登录" name="login">
             <UserAuthForm mode="login" @success="handleSuccess" />
@@ -11,6 +12,7 @@
             <UserAuthForm mode="register" @success="handleSuccess" />
           </el-tab-pane>
         </el-tabs>
+
       </div>
     </el-card>
   </div>

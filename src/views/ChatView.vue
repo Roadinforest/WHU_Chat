@@ -8,8 +8,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import FriendList from '@/components/FriendList.vue'
-import ChatWindow from '@/components/ChatWindow.vue'
+import FriendList from '@/components/chat/FriendList.vue'
+import ChatWindow from '@/components/chat/ChatWindow.vue'
 
 const selectedFriendId = ref<number | null>(null)
 

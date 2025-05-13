@@ -1,7 +1,7 @@
 <!-- src/components/FriendList.vue -->
 <template>
   <el-menu class="friend-list" :default-active="selectedId?.toString()" @select="handleSelect">
-    <el-menu-item v-for="friend in friends" :key="friend.id" :index="friend.id.toString()">
+    <el-menu-item v-if="friends!=null" v-for="friend in friends" :key="friend.id" :index="friend.id.toString()">
       <el-avatar :src="friend.avatarUrl" class="mr-2" />
       {{ friend.username }}
     </el-menu-item>
@@ -10,22 +10,27 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import FriendService from '@/services/FriendService';
 
 const emit = defineEmits(['select-friend'])
 const props = defineProps<{ selectedId: number | null }>()
 
-const friends = ref<Array<{ id: number; username: string; avatarUrl?: string }>>([])
+// const friends = ref<Array<{ id: number; username: string; avatarUrl?: string }>>([])
+const friends = ref(null)
 
 const handleSelect = (id: string) => {
   emit('select-friend', Number(id))
 }
 
-onMounted(() => {
+onMounted( async() => {
+  const response  = await FriendService.getFriendList()
+  friends.value = response.data
+  console.log(friends.value)
   // 示例静态数据，可替换为 API 请求
-  friends.value = [
-    { id: 1, username: '小明', avatarUrl: '' },
-    { id: 2, username: '小红', avatarUrl: '' }
-  ]
+  // friends.value = [
+  //   { id: 1, username: '小明', avatarUrl: '' },
+  //   { id: 2, username: '小红', avatarUrl: '' }
+  // ]
 })
 </script>
 

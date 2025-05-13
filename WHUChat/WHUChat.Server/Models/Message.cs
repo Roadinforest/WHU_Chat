@@ -11,6 +11,5 @@ namespace WHUChat.Server.Models
         public string ResUrl { get; set; }
 
         public User User { get; set; }
-        public ICollection<RoomMessage> RoomMessages { get; set; }
     }
 }

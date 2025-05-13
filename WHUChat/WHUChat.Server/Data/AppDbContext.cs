@@ -17,7 +17,6 @@ namespace WHUChat.Server.Data
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomMember> RoomMembers { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<RoomMessage> RoomMessages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -79,51 +78,54 @@ namespace WHUChat.Server.Data
                 .HasForeignKey(fr => fr.FriendId)  // 通过 FriendId 进行关联
                 .OnDelete(DeleteBehavior.Cascade);  // 好友删除时，相关好友关系级联删除
 
-            // 配置 Room 表（群聊房间）
-            modelBuilder.Entity<Room>()
-                .HasKey(r => r.Id);  // 房间的主键是 Id
 
-            // 配置 Room 与 RoomMember 之间的关系（房间与成员）
-            modelBuilder.Entity<RoomMember>()
-                .HasKey(rm => new { rm.RoomId, rm.MemberId });  // 复合主键：房间ID + 成员ID
+            // Room Configuration
+            modelBuilder.Entity<Room>(entity =>
+            {
+                //entity.ToTable("rooms"); // 与你的 SQL 匹配
+                entity.HasKey(r => r.Id);
+                entity.Property(r => r.Name).IsRequired().HasMaxLength(255);
+                entity.Property(r => r.AvatarUrl).HasMaxLength(255);
+                entity.Property(r => r.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-            modelBuilder.Entity<RoomMember>()
-                .HasOne(rm => rm.Room)  // 每个 RoomMember 都有一个关联的房间
-                .WithMany(r => r.RoomMembers)  // 一个房间可以有多个成员
-                .HasForeignKey(rm => rm.RoomId)  // 通过 RoomId 进行关联
-                .OnDelete(DeleteBehavior.Cascade);  // 房间删除时，成员关系级联删除
+                // Relation to Creator (User)
+                entity.HasOne(r => r.Creator)
+                      .WithMany() // 如果 User 模型没有 ICollection<Room> CreatedRooms 属性
+                                  // .WithMany(u => u.CreatedRooms) // 如果 User 有 CreatedRooms 属性
+                      .HasForeignKey(r => r.CreatorId)
+                      .OnDelete(DeleteBehavior.Cascade); // 或 Restrict/SetNull，取决于业务
 
-            modelBuilder.Entity<RoomMember>()
-                .HasOne(rm => rm.Member)  // 每个 RoomMember 都有一个关联的成员（成员是一个用户）
-                .WithMany(u => u.RoomMembers)  // 一个用户可以有多个房间成员关系
-                .HasForeignKey(rm => rm.MemberId)  // 通过 MemberId 进行关联
-                .OnDelete(DeleteBehavior.Cascade);  // 用户删除时，成员关系级联删除
+                // Relation to RoomMembers (One-to-Many)
+                entity.HasMany(r => r.RoomMembers)
+                      .WithOne(rm => rm.Room)
+                      .HasForeignKey(rm => rm.RoomId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
 
-            // 配置 Message 表（消息记录）
-            modelBuilder.Entity<Message>()
-                .HasKey(m => m.Id);  // 消息的主键是 Id
 
-            modelBuilder.Entity<Message>()
-                .HasOne(m => m.User)  // 每个 Message 都有一个关联的用户（消息发送者）
-                .WithMany(u => u.Messages)  // 一个用户可以有多个消息
-                .HasForeignKey(m => m.UserId)  // 通过 UserId 进行关联
-                .OnDelete(DeleteBehavior.SetNull);  // 用户删除时，消息的 UserId 设置为 null
+            // RoomMember Configuration (Composite Key)
+            modelBuilder.Entity<RoomMember>(entity =>
+            {
+                entity.ToTable("room_members"); // 与你的 SQL 匹配
+                entity.HasKey(rm => new { rm.RoomId, rm.MemberId }); // 复合主键
 
-            // 配置 RoomMessage 表（房间消息与房间的关系）
-            modelBuilder.Entity<RoomMessage>()
-                .HasKey(rm => new { rm.RoomId, rm.MessageId });  // 复合主键：房间ID + 消息ID
+                // Relation to Room (Many-to-One)
+                // (already configured by Room's HasMany)
+                // entity.HasOne(rm => rm.Room)
+                //       .WithMany(r => r.RoomMembers)
+                //       .HasForeignKey(rm => rm.RoomId);
 
-            modelBuilder.Entity<RoomMessage>()
-                .HasOne(rm => rm.Room)  // 每个 RoomMessage 都有一个关联的房间
-                .WithMany(r => r.RoomMessages)  // 一个房间可以有多个消息
-                .HasForeignKey(rm => rm.RoomId)  // 通过 RoomId 进行关联
-                .OnDelete(DeleteBehavior.Cascade);  // 房间删除时，房间消息级联删除
+                // Relation to User (Member) (Many-to-One)
+                entity.HasOne(rm => rm.Member)
+                      .WithMany(u => u.RoomMembers) // User 模型需要 ICollection<RoomMember> RoomMembers
+                      .HasForeignKey(rm => rm.MemberId)
+                      .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<RoomMessage>()
-                .HasOne(rm => rm.Message)  // 每个 RoomMessage 都有一个关联的消息
-                .WithMany(m => m.RoomMessages)  // 一个消息可以属于多个房间
-                .HasForeignKey(rm => rm.MessageId)  // 通过 MessageId 进行关联
-                .OnDelete(DeleteBehavior.Cascade);  // 消息删除时，房间消息级联删除
+                //如果采纳了数据库建议，可以配置 Role 和 JoinedAt
+                entity.Property(rm => rm.Role).HasConversion<string>().HasDefaultValue(RoomMemberRole.MEMBER);
+                entity.Property(rm => rm.JoinedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+            });
+
 
         }
 

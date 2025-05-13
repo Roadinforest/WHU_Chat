@@ -58,7 +58,8 @@ namespace WHUChat.Server.Services
             var room = new Room // 这是新的 Room 实体
             {
                 Name = dto.Name,
-                AvatarUrl = dto.AvatarUrl,
+                //AvatarUrl = dto.AvatarUrl,
+                AvatarUrl = "https://www.dummyimage.com/600x400/000000/fff&text=" + dto.Name[0],
                 CreatorId = creatorId,
                 Creator = creator, // 设置导航属性
                 CreatedAt = DateTime.UtcNow

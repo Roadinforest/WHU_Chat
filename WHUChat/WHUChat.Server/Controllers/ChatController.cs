@@ -35,31 +35,31 @@ namespace WHUChat.Server.Controllers
 
 
         //在EntryRoom(signalR)前调用，获取历史记录
-        [HttpGet("{roomId}/get_history")]
-        public async Task<ActionResult<Result<object>>> GetHistory(long roomId)
+        [HttpGet("get_history")]
+        public async Task<ActionResult<Result<object>>> GetHistory(HistoryDto room)
         {
             try {
-                var messages = await _chatService.GetHistory(roomId);
+                var messages = await _chatService.GetHistory(room.RoomId);
                 return Ok(Result<List<SendMessageRequestDto>>.Ok(messages, "获取成功"));
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "获取房间历史消息时发生意外错误 (Room: {RoomId})。", roomId);
+                _logger.LogError(ex, "获取房间历史消息时发生意外错误 (Room: {RoomId})。", room.RoomId);
                 return StatusCode(500, Result<List<SendMessageRequestDto>>.Fail("获取历史消息失败：" + ex.Message));
             }
         }
 
         //查找特定用户的信息
-        [HttpGet("{roomId}/{username}/get_specific_message")]
-        public async Task<ActionResult<Result<object>>> GetSpecificMessage(long roomId, string username) {
+        [HttpGet("get_specific_message")]
+        public async Task<ActionResult<Result<object>>> GetSpecificMessage(SpecificDto desti) {
             try
             {
-                var messages = await _chatService.GetSpecificMessage(roomId,username);
+                var messages = await _chatService.GetSpecificMessage(desti.RoomId,desti.userName);
                 return Ok(Result<List<SendMessageRequestDto>>.Ok(messages, "获取成功"));
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "获取目标用户消息时发生意外错误 (Room: {RoomId},User: {UserName})。", roomId,username);
+                _logger.LogError(ex, "获取目标用户消息时发生意外错误 (Room: {RoomId},User: {UserName})。", desti.RoomId, desti.userName);
                 return StatusCode(500, Result<List<SendMessageRequestDto>>.Fail("目标用户消息不存在"));
             }
         }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj": {}
+    "C:\\Users\\DevilVoice\\Desktop\\Chat\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj": {}
   },
   "projects": {
-    "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj": {
+    "C:\\Users\\DevilVoice\\Desktop\\Chat\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
+        "projectUniqueName": "C:\\Users\\DevilVoice\\Desktop\\Chat\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
         "projectName": "WHUChat.Server",
-        "projectPath": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
-        "packagesPath": "C:\\Users\\vkswh\\.nuget\\packages\\",
-        "outputPath": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\obj\\",
+        "projectPath": "C:\\Users\\DevilVoice\\Desktop\\Chat\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
+        "packagesPath": "C:\\Users\\DevilVoice\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DevilVoice\\Desktop\\Chat\\WHU_Chat\\WHUChat\\WHUChat.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\3VS2019\\NuGetPackages"
+          "D:\\Visual_Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\vkswh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DevilVoice\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -96,24 +96,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.15, 8.0.15]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

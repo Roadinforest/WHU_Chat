@@ -82,6 +82,17 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = false,
         ClockSkew = TimeSpan.Zero
     };
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            var accessToken = context.Request.Query["access_token"];
+            var path = context.HttpContext.Request.Path;
+            if (!string.IsNullOrEmpty(accessToken) && (path.StartsWithSegments("/chatHub")))
+                context.Token = accessToken;
+            return Task.CompletedTask;
+        }
+    };//将jwt放到请求url中并赋值给context.Token
 });
 
 // 注册服务
@@ -93,6 +104,9 @@ builder.Services.AddScoped<IFriendshipRepository, FriendshipRepository>();
 
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IRoomService, RoomService>();
+
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+builder.Services.AddScoped<IChatService, ChatService>();
 
 
 var app = builder.Build();

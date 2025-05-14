@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using WHUChat.Server.Services;
 using WHUChat.Server.DTOs.FriendShip;
+using WHUChat.Server.DTOs.Room;
 using WHUChat.Server.Common;
-using System.Security.Claims; // 用于获取 User ID
+using System.Security.Claims;
+using System.Data.SqlTypes; // 用于获取 User ID
 
 namespace WHUChat.Server.Controllers
 {
@@ -13,11 +15,13 @@ namespace WHUChat.Server.Controllers
     public class FriendController : ControllerBase
     {
         private readonly IFriendService _friendService;
+        private readonly IRoomService _roomService;
         private readonly ILogger<FriendController> _logger;
 
-        public FriendController(IFriendService friendService, ILogger<FriendController> logger)
+        public FriendController(IFriendService friendService,IRoomService roomService, ILogger<FriendController> logger)
         {
             _friendService = friendService;
+            _roomService = roomService;
             _logger = logger;
         }
 
@@ -75,6 +79,18 @@ namespace WHUChat.Server.Controllers
             {
                 long receiverId = GetCurrentUserId(); // 响应者是当前用户
                 await _friendService.RespondFriendRequestAsync(receiverId, dto.SenderId, dto.Accept);
+                if (dto.Accept) {//建立好友关系时创建私人对话（抽象为两个成员的room）
+                    try
+                    {
+                        var room = await _roomService.CreateRoomAsync(dto.SenderId, new CreateRoomRequestDto { Name = $"Privateroom_{dto.SenderId.ToString()}_with_{receiverId.ToString()}" });
+                        await _roomService.JoinRoomAsync(receiverId, room.Id);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "创建私人对话失败 (User1: {UserId1}, User2: {UserId2})。", dto.SenderId, receiverId);
+                        return StatusCode(500, Result<object>.Fail("创建私人对话失败：" + ex.Message));
+                    }
+                }
                 var message = dto.Accept ? "已接受好友申请" : "已拒绝好友申请";
                 return Ok(Result<object>.Ok(null, message));
             }
@@ -91,6 +107,11 @@ namespace WHUChat.Server.Controllers
             catch (InvalidOperationException ex) // 如请求已被处理
             {
                 _logger.LogWarning(ex, "响应好友申请操作无效。Receiver: {ReceiverId}, Sender: {SenderId}", GetCurrentUserId(), dto.SenderId);
+                return Conflict(Result<object>.Fail(ex.Message));
+            }
+            catch (SqlAlreadyFilledException ex)
+            {
+                _logger.LogWarning(ex, "响应好友申请失败：双方已经是好友。Receiver: {ReceiverId}, Sender: {SenderId}", GetCurrentUserId(), dto.SenderId);
                 return Conflict(Result<object>.Fail(ex.Message));
             }
             catch (Exception ex)

@@ -50,7 +50,7 @@ namespace WHUChat.Server.Controllers
         }
 
         //查找特定用户的信息
-        [HttpGet("{roomId}/get_specific_message")]
+        [HttpGet("{roomId}/{username}/get_specific_message")]
         public async Task<ActionResult<Result<object>>> GetSpecificMessage(long roomId, string username) {
             try
             {

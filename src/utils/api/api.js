@@ -1,9 +1,10 @@
 // src/utils/api.js
 import axios from 'axios';
+import baseURL from './baseURL';
 axios.defaults.withCredentials = true;  // 只有后端设置了 AllowCredentials 才用
 
 const api = axios.create({
-  baseURL: 'http://localhost:5053/api',
+  baseURL: `${baseURL}/api`,
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',

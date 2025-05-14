@@ -1,4 +1,4 @@
-<!-- src/components/ChatWindow.vue -->
+<!-- src/components/chat/ChatWindow.vue -->
 <template>
   <div class="chat-window">
     <div class="chat-header">
@@ -17,12 +17,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
+import signalRService from '@/services/SignalRService';
 
 const props = defineProps<{ friendId: number }>()
 const input = ref('')
 const messages = ref<Array<{ id: number; senderName: string; content: string }>>([])
 const friendName = ref('')
+
+onMounted(async () => { 
+  await signalRService.startConnection()
+})
 
 watch(
   () => props.friendId,

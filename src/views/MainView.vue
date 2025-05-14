@@ -5,16 +5,7 @@
     <!-- 主体内容容器：自动占满剩余空间 -->
     <div class="main-content">
 
-      <div class="chat-room" v-if="currentPage === 'friend-list'">
-      <FriendList
-        @select-friend="handleSelectFriend"
-        :selectedId="selectedFriendId"
-      />
-      <ChatWindow
-        v-if="selectedFriendId"
-        :friendId="selectedFriendId"
-      />
-      </div>
+      <ChatView class="chat-room" v-if="currentPage === 'friend-list'" />
 
       <FriendSearch v-else-if="currentPage === 'friend-search'" />
       <FriendRequestList v-else-if="currentPage === 'friend-request'" />
@@ -25,22 +16,17 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import FriendList from '@/components/chat/FriendList.vue'
-import ChatWindow from '@/components/chat/ChatWindow.vue'
 import FriendRequestList from '@/components/friend/FriendRequestList.vue'
 import FriendSearch from '@/components/friend/FriendSearch.vue'
+import ChatView from '@/views/ChatView.vue'
 import SiderBar from './SiderBar.vue'
-
-const selectedFriendId = ref(null)
-const handleSelectFriend = (id) => {
-  selectedFriendId.value = id
-}
 
 const currentPage = ref('friend-list') // 默认页面
 
 const handlePageChange = (page) => {
   currentPage.value = page
 }
+
 </script>
 
 <style scoped>

@@ -3,7 +3,7 @@ import api from "@/utils/api/api.js";
 const UserService = {
   async getUserInfo() {
     try {
-      const res = await api.get(`/api/user/me`);
+      const res = await api.get(`/user/me`);
       console.log(res.data);
       return res.data;
     } catch (error) {
@@ -13,8 +13,8 @@ const UserService = {
 
   async getUserById(userId) {
     try {
-        const res = await api.get(`/api/user/${userId}`);
-        console.log(res.data);
+        const res = await api.get(`/user/${userId}`);
+      console.log(res.data);
         return res.data;
     } catch (error) {
       console.log(error);

@@ -1,7 +1,10 @@
 <!-- src/views/ChatView.vue -->
 <template>
   <div class="chat-container">
-    <FriendList @select-friend="handleSelectFriend" :selectedId="selectedFriendId" />
+    <div class="sidebar">
+      <FriendSearch />
+      <FriendList @select-friend="handleSelectFriend" :selectedId="selectedFriendId" />
+    </div>
     <ChatWindow :friendId="selectedFriendId" v-if="selectedFriendId" />
   </div>
 </template>
@@ -10,10 +13,11 @@
 import { ref } from 'vue'
 import FriendList from '@/components/chat/FriendList.vue'
 import ChatWindow from '@/components/chat/ChatWindow.vue'
+import FriendSearch from '@/components/friend/FriendSearch.vue'
 
-const selectedFriendId = ref<number | null>(null)
-
-const handleSelectFriend = (id: number) => {
+// const selectedFriendId = ref<number | null>(null)
+const selectedFriendId = ref(null)
+const handleSelectFriend = (id) => {
   selectedFriendId.value = id
 }
 </script>
@@ -22,5 +26,13 @@ const handleSelectFriend = (id: number) => {
 .chat-container {
   display: flex;
   height: 100vh;
+}
+
+.sidebar {
+  width: 300px;
+  padding: 1rem;
+  border-right: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
 }
 </style>

@@ -34,7 +34,6 @@ const searchFriend = async () => {
         }
         const res= await UserService.getUserById(searchId.value)
         searchResult.value = res.data
-        console.log("get frind info", res.data)
     } catch (err) {
         console.error('搜索失败', err)
         searchResult.value = null
@@ -43,7 +42,6 @@ const searchFriend = async () => {
 
 const sendFriendRequest = async (targetId) => {
     try {
-        console.log("send friend request", targetId)
         await FriendService.sendFriendRequest(targetId)
         alert('好友请求已发送！')
     } catch (err) {

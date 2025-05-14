@@ -54,17 +54,20 @@ const sendMessage = () => {
   display: flex;
   flex-direction: column;
 }
+
 .chat-header {
   padding: 10px;
   background-color: #f5f5f5;
   border-bottom: 1px solid #ddd;
 }
+
 .chat-messages {
   flex: 1;
   padding: 10px;
   overflow-y: auto;
   background-color: #fafafa;
 }
+
 .chat-message {
   margin-bottom: 8px;
 }

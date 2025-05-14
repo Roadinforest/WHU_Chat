@@ -27,7 +27,7 @@ const activeTab = ref('login')
 const router = useRouter()
 
 const handleSuccess = () => {
-  router.push('/chat') // 登录注册成功跳转聊天页
+  router.push('/home') // 登录注册成功跳转聊天页
 }
 </script>
 
@@ -39,6 +39,7 @@ const handleSuccess = () => {
   height: 100vh;
   background: #f2f2f2;
 }
+
 .auth-card {
   width: 400px;
   padding: 20px;

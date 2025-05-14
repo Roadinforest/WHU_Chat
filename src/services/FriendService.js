@@ -35,7 +35,7 @@ const FriendService = {
   async getReceivedRequests() {
     try {
       const res = await api.get('/friend/received-requests');
-      return res;
+      return res.data;
     } catch (error) {
       console.error('Error fetching received requests:', error);
       throw error;
@@ -45,7 +45,7 @@ const FriendService = {
   async getSentRequests() {
     try {
       const res = await api.get('/friend/sent-requests');
-      return res;
+      return res.data;
     } catch (error) {
       console.error('Error fetching sent requests:', error);
       throw error;

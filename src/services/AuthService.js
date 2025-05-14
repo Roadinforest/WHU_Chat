@@ -16,7 +16,6 @@ const AuthService = {
     try {
       const res = await api.post("/Auth/login", { username, password });
       const token = res.data.data;
-      console.log("Token saved", token);
 
       if (token) {
         localStorage.setItem('userToken', token); // 保存 token

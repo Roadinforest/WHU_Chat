@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref ,defineEmits} from 'vue'
 import { ElMessage } from 'element-plus'
 import  AuthService  from '@/services/AuthService'
 import { useRouter } from 'vue-router'
@@ -26,6 +26,7 @@ const router = useRouter()
 const formRef = ref()
 const form = ref({ username: '', password: '' })
 const props  = defineProps(["mode"])
+const emit = defineEmits(['success'])
 
 const rules = {
   username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
@@ -34,7 +35,6 @@ const rules = {
 
 const onSubmit = async () => {
   const mode = props.mode; 
-  console.log('submit!', mode)
   await formRef.value.validate()
 
   try {
@@ -43,7 +43,7 @@ const onSubmit = async () => {
       res = await AuthService.login(form.value);
       localStorage.setItem('token', res.data.token);
       ElMessage.success('登录成功');
-      router.push('/chat');
+      emit('success')
     } else if (mode === 'register') {
       res = await AuthService.register(form.value);
       ElMessage.success('注册成功');

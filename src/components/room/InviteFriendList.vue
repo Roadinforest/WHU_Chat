@@ -1,15 +1,16 @@
 <template>
   <div>
     <el-checkbox-group v-model="selected">
-      <el-checkbox
-        v-for="friend in friends"
-        :key="friend.id"
-        :label="friend.id"
-      >
+      <el-checkbox v-for="friend in friends" :key="friend.id" :label="friend.id">
         {{ friend.username }}
       </el-checkbox>
     </el-checkbox-group>
-    <el-button @click="invite">邀请好友</el-button>
+
+      <El-Divider/>
+    <div class="button-container">
+      <div></div>
+      <el-button @click="invite" style="width: 15%;" type="primary">邀请好友</el-button>
+    </div>
   </div>
 </template>
 
@@ -31,10 +32,19 @@ onMounted(async () => {
 
 async function invite() {
   for (const id of selected.value) {
-    console.log("select id",id);
-    console.log("room id",props.roomId)
+    console.log("select id", id);
+    console.log("room id", props.roomId)
     await RoomService.inviteFriend(props.roomId, id);
     emit("invited", id);
   }
 }
 </script>
+
+
+<style scoped>
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>

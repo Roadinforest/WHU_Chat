@@ -7,12 +7,12 @@
         <strong>{{ msg.username }}：</strong> {{ msg.content }}
       </div>
     </div>
-    <el-input
-      v-model="inputMessage"
-      placeholder="输入消息..."
-      @keyup.enter="sendMsg"
-    />
-    <el-button @click="sendMsg" type="primary">发送</el-button>
+
+    <div class="message-container">
+      <el-input v-model="inputMessage" placeholder="输入消息..." @keyup.enter="sendMsg" style="margin-left:5%" />
+      <div style="width:5%"></div>
+      <el-button style="margin-right:5%" @click="sendMsg" type="primary">发送</el-button>
+    </div>
   </div>
 </template>
 
@@ -20,7 +20,7 @@
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import signalRService from '@/services/SignalRService'
 
-const props = defineProps(["roomId","roomName"])
+const props = defineProps(["roomId", "roomName"])
 const messages = ref([])
 const inputMessage = ref("")
 
@@ -63,11 +63,18 @@ const sendMsg = async () => {
   flex: 1;
   padding: 1rem;
 }
+
 .message-box {
   height: 60vh;
   overflow-y: auto;
   border: 1px solid #eee;
   margin-bottom: 1rem;
   padding: 0.5rem;
+  margin: 5%;
+}
+
+.message-container {
+  display: flex;
+  align-items: space-between;
 }
 </style>

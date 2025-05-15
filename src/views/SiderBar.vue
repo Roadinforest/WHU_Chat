@@ -3,15 +3,17 @@
     <UserHeader />
 
     <ElDivider />
-    <button @click="select('friend-list')">好友</button>
-    <button @click="select('chat-room')">聊天室</button>
-    <button @click="select('create-chat-room')">聊天室新建</button>
-    <button @click="select('friend-search')">朋友搜索</button>
-    <button @click="select('friend-request')">好友请求</button>
+    <el-button class="button" type="primary" @click="select('friend-list')">好友</el-button>
+    <el-button class="button" type="primary" @click="select('chat-room')">聊天室</el-button>
+    <!-- <el-button class="button" type="primary" @click="select('create-chat-room')">聊天室新建</el-button> -->
+    <el-button class="button" type="primary" @click="select('friend-search')">朋友搜索</el-button>
+    <el-button class="button" type="primary" @click="select('friend-request')">好友请求</el-button>
+    <RoomCreateButton class="button"/>
   </aside>
 </template>
 
 <script setup>
+import RoomCreateButton from '@/components/room/RoomCreateButton.vue'
 import UserHeader from '@/components/user/userHeader.vue'
 import { ElDivider } from 'element-plus'
 import { defineEmits } from 'vue'
@@ -26,13 +28,13 @@ const select = (page) => {
 <style scoped>
 .sidebar {
   width: 20vw;
-  background-color: #f0f0f0;
+  background-color: rgb(231, 238, 241);
   padding: 10px;
 }
 
-button {
+.button {
   display: block;
-  width: 100%;
-  margin-bottom: 10px;
+  width: 90%;
+  margin: 0px 20px 10px 10px;
 }
 </style>

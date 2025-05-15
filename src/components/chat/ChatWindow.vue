@@ -2,7 +2,7 @@
 <template>
   <div class="chat-window">
     <div class="chat-header">
-      <h3>与 {{ friendName }} 聊天</h3>
+      <h3>与 {{ friendName }} 聊天（测试版本）</h3>
     </div>
     <div class="chat-messages">
       <div v-for="msg in messages" :key="msg.id" class="chat-message">

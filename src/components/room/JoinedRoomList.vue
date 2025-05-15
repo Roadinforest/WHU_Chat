@@ -8,10 +8,17 @@
         :key="room.id"
         :index="room.id.toString()"
       >
+
+      <div class="room-container">
+        <el-avatar :src="room.avatarUrl" :size="25" />
+
         {{ room.name }}
+
         <el-icon>
             <Delete @click="deleteRom(room.id)" />
         </el-icon>
+
+      </div>
       </el-menu-item>
     </el-menu>
   </div>
@@ -61,5 +68,12 @@ onMounted(fetchRooms)
   width: 20vw;
   border-right: 1px solid #ccc;
   padding: 1rem;
+}
+
+.room-container {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 </style>

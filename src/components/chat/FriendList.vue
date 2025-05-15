@@ -1,17 +1,22 @@
 <!-- src/components/FriendList.vue -->
 <template>
-  <el-menu class="friend-list" :default-active="selectedId?.toString()" @select="handleSelect">
+  <div class="friend-list">
+  <el-row>
+    <h3>好友列表</h3>
+    </el-row>
+  <el-menu  :default-active="selectedId?.toString()" @select="handleSelect">
     <el-menu-item v-if="friends != null" v-for="friend in friends" :key="friend.id" :index="friend.id.toString()"
       class="menu-item">
-      <div>
-        <el-avatar :src="friend.avatarUrl" class="mr-2" />
+      <div class="item-container">
+        <el-avatar :src="friend.avatarUrl" size="25" />
         {{ friend.username }}
-      </div>
         <el-icon style="vertical-align: middle">
           <Delete @click="handleDelete(friend.id)" />
         </el-icon>
+      </div>
     </el-menu-item>
   </el-menu>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -43,15 +48,12 @@ onMounted(async () => {
 .friend-list {
   /* width: 250px; */
   width: 20vw;
-  border-right: 1px solid #ddd;
-  padding-top: 10px;
+  border-right: 1px solid #ccc;
+  padding: 1rem;
 }
 
-.mr-2 {
-  margin-right: 10px;
-}
-
-.menu-item {
+.item-container {
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;

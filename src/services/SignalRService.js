@@ -53,7 +53,7 @@ class SignalRService {
   async entryRoom(roomId) {
     if (!this.connection) return
     try {
-      await this.connection.invoke('EntryRoom', roomId)
+      await this.connection.invoke('EntryRoom', String(roomId))
       console.log(`Entered room ${roomId}`)
     } catch (err) {
       console.error(' Failed to enter room:', err)
@@ -66,7 +66,7 @@ class SignalRService {
   async quitRoom(roomId) {
     if (!this.connection) return
     try {
-      await this.connection.invoke('QuitFromRoom', roomId)
+      await this.connection.invoke('QuitFromRoom',String(roomId))
       console.log(`Left room ${roomId}`)
     } catch (err) {
       console.error('Failed to leave room:', err)
@@ -79,7 +79,8 @@ class SignalRService {
   async sendMessage(roomId, message, resUrl = null) {
     if (!this.connection) return
     try {
-      await this.connection.invoke('SendMessage', roomId, message, resUrl)
+      await this.connection.invoke('SendMessage', String(roomId), String(message)
+      , String(resUrl))
     } catch (err) {
       console.error('SendMessage failed:', err)
     }

@@ -7,11 +7,9 @@
         <el-avatar :src="friend.avatarUrl" class="mr-2" />
         {{ friend.username }}
       </div>
-      <button @click="handleDelete(friend.id)">
         <el-icon style="vertical-align: middle">
-          <Delete />
+          <Delete @click="handleDelete(friend.id)" />
         </el-icon>
-      </button>
     </el-menu-item>
   </el-menu>
 </template>

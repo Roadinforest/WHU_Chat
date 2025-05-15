@@ -1,5 +1,6 @@
 // src/services/RoomService.js
 import api from "@/utils/api/api"
+import { invalidateTypeCache } from "vue/compiler-sfc";
 
 const RoomService = {
   async createRoom({ name }) {
@@ -44,10 +45,11 @@ const RoomService = {
     }
   },
 
-  async inviteFriend(roomId, friendId) {
+  async inviteFriend(roomId, invitedUserId) {
     try {
-      const response = await api.post(`/room/${roomId}/invite`, { friendId });
-      console.log(`Friend ${friendId} invited to room ${roomId} successfully!`);
+      console.log(invitedUserId)
+      const response = await api.post(`/room/${roomId}/invite`, { invitedUserId });
+      console.log(`Friend ${invitedUserId} invited to room ${roomId} successfully!`);
       return response.data;
     } catch (error) {
       this.handleError(error);

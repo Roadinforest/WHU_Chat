@@ -5,6 +5,7 @@
     <ElDivider />
     <button @click="select('friend-list')">好友</button>
     <button @click="select('chat-room')">聊天室</button>
+    <button @click="select('create-chat-room')">聊天室新建</button>
     <button @click="select('friend-search')">朋友搜索</button>
     <button @click="select('friend-request')">好友请求</button>
   </aside>

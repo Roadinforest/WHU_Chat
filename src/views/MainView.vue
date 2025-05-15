@@ -1,11 +1,13 @@
 <template>
-  <div class="chat-container">
+  <div class="main-container">
     <SiderBar @page-change="handlePageChange" />
     
     <!-- 主体内容容器：自动占满剩余空间 -->
     <div class="main-content">
 
-      <ChatView class="chat-room" v-if="currentPage === 'friend-list'" />
+      <ChatView class="friend-list" v-if="currentPage === 'friend-list'" />
+      <RoomCreateView  v-else-if="currentPage === 'create-chat-room'" />
+      <RoomView  v-else-if="currentPage === 'chat-room'" />
 
       <FriendSearch v-else-if="currentPage === 'friend-search'" />
       <FriendRequestList v-else-if="currentPage === 'friend-request'" />
@@ -20,6 +22,8 @@ import FriendRequestList from '@/components/friend/FriendRequestList.vue'
 import FriendSearch from '@/components/friend/FriendSearch.vue'
 import ChatView from '@/views/ChatView.vue'
 import SiderBar from './SiderBar.vue'
+import RoomView from './RoomView.vue'
+import RoomCreateView from './RoomCreateView.vue'
 
 const currentPage = ref('friend-list') // 默认页面
 
@@ -30,12 +34,12 @@ const handlePageChange = (page) => {
 </script>
 
 <style scoped>
-.chat-container {
+.main-container {
   display: flex;
   height: 100vh;
 }
 
-.chat-room {
+.friend-list {
   display: flex;
   height: 100%;
 }

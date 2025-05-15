@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DevilVoice\\Desktop\\Chat\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj": {}
+    "E:\\Projects\\whuchat-Server\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DevilVoice\\Desktop\\Chat\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj": {
+    "E:\\Projects\\whuchat-Server\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DevilVoice\\Desktop\\Chat\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
+        "projectUniqueName": "E:\\Projects\\whuchat-Server\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
         "projectName": "WHUChat.Server",
-        "projectPath": "C:\\Users\\DevilVoice\\Desktop\\Chat\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
-        "packagesPath": "C:\\Users\\DevilVoice\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DevilVoice\\Desktop\\Chat\\WHU_Chat\\WHUChat\\WHUChat.Server\\obj\\",
+        "projectPath": "E:\\Projects\\whuchat-Server\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
+        "packagesPath": "C:\\Users\\Roadinforest\\.nuget\\packages\\",
+        "outputPath": "E:\\Projects\\whuchat-Server\\WHUChat\\WHUChat.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Visual_Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\DevilVoice\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Roadinforest\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -43,8 +43,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -104,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

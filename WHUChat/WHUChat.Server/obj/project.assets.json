@@ -3779,23 +3779,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Roadinforest\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\DevilVoice\\.nuget\\packages\\": {},
+    "D:\\Visual_Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\whuchat-Server\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
+      "projectUniqueName": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
       "projectName": "WHUChat.Server",
-      "projectPath": "E:\\Projects\\whuchat-Server\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
-      "packagesPath": "C:\\Users\\Roadinforest\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\whuchat-Server\\WHUChat\\WHUChat.Server\\obj\\",
+      "projectPath": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
+      "packagesPath": "C:\\Users\\DevilVoice\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "D:\\Visual_Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Roadinforest\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DevilVoice\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3821,7 +3821,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -3881,7 +3882,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

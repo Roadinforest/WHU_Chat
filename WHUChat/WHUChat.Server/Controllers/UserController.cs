@@ -22,7 +22,7 @@ namespace WHUChat.Server.Controllers
         // Helper to get current user ID from token claims
         private long GetCurrentUserId()
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier) ?? User.FindFirst("id"); // 尝试标准和自定义 claim
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?? User.FindFirst("id"); // 尝试标准和自定义 claim
             if (userIdClaim == null || !long.TryParse(userIdClaim.Value, out var userId))
             {
                 // 如果在 Authorize 后仍然无法获取 ID，则说明 Token 或配置有问题

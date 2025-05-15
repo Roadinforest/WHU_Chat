@@ -11,19 +11,22 @@ namespace WHUChat.Server.Repositories
 
         public async Task<List<Message>> GetHistory(long roomId) {
             return await _context.Messages.Where(m => m.RoomId == roomId)
-                .Include(m => m.Content)
                 .ToListAsync();
         }
 
         public async Task<List<Message>> GetSpecificMessage(long roomId, string username) { 
-            return await _context.Messages.Where(m=>m.RoomId==roomId &&m.UserName==username)
-                .Include(m => m.Content)
+            return await _context.Messages.Where(m=>m.RoomId==roomId &&m.Username==username)
                 .ToListAsync();
         
         }
-        public async Task InsertMessage(Message message) {
+        public  async Task InsertMessage(Message message) {
             await _context.Messages.AddAsync(message);
             await _context.SaveChangesAsync();
         }
+
+        //public async Task SaveChangesAsync()
+        //{
+        //    await _context.SaveChangesAsync();
+        //}
     }
 }

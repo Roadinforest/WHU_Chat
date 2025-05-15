@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using WHUChat.Server.Services;
 using WHUChat.Server.Common;
 using System.Security.Claims;
-using WHUChat.Server.DTOs; // 用于获取 User ID
+using WHUChat.Server.DTOs;
+using WHUChat.Server.Models; // 用于获取 User ID
 
 
 namespace WHUChat.Server.Controllers
@@ -35,9 +36,10 @@ namespace WHUChat.Server.Controllers
 
 
         //在EntryRoom(signalR)前调用，获取历史记录
-        [HttpGet("get_history")]
+        [HttpPost("get_history")]
         public async Task<ActionResult<Result<object>>> GetHistory(HistoryDto room)
         {
+            
             try {
                 var messages = await _chatService.GetHistory(room.RoomId);
                 return Ok(Result<List<SendMessageRequestDto>>.Ok(messages, "获取成功"));
@@ -50,7 +52,7 @@ namespace WHUChat.Server.Controllers
         }
 
         //查找特定用户的信息
-        [HttpGet("get_specific_message")]
+        [HttpPost("get_specific_message")]
         public async Task<ActionResult<Result<object>>> GetSpecificMessage(SpecificDto desti) {
             try
             {

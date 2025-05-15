@@ -1,4 +1,5 @@
-﻿using WHUChat.Server.DTOs;
+﻿using Microsoft.EntityFrameworkCore;
+using WHUChat.Server.DTOs;
 using WHUChat.Server.Models;
 
 namespace WHUChat.Server.Repositories
@@ -9,5 +10,8 @@ namespace WHUChat.Server.Repositories
 
         public Task<List<Message>> GetSpecificMessage(long roomId, string username);
         public Task InsertMessage(Message message);
+
+        //public Task SaveChangesAsync();
+        
     }
 }

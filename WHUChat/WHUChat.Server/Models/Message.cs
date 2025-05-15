@@ -11,15 +11,15 @@ namespace WHUChat.Server.Models
 
         [Required]
         [StringLength(255)]
-        public string UserName { get; set; }
+        public string Username { get; set; }
 
         [StringLength(255)]
         public string Content { get; set; }
 
         public DateTime CreatedAt { get; set; }
-        public string? ResUrl { get; set; }
+        public string? Resurl { get; set; }
 
-        public User User { get; set; }
+        //public User User { get; set; }
 
         public Room Room { get; set; }
     }

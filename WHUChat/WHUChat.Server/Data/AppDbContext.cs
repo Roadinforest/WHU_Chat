@@ -131,11 +131,11 @@ namespace WHUChat.Server.Data
             {
                 entity.HasKey(m => m.Id);
                 entity.Property(m => m.Content).IsRequired().HasMaxLength(255);
-                entity.Property(m=>m.UserName).IsRequired().HasMaxLength(255);
+                entity.Property(m=>m.Username).IsRequired().HasMaxLength(255);
                 //entity.Property(m => m.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                entity.HasOne(m => m.User)
-                .WithMany(u => u.Messages);//一个用户对应多个消息
+                //entity.HasOne(m => m.User)
+                //.WithMany(u => u.Messages);//一个用户对应多个消息
 
                 entity.HasOne(m => m.Room)
                 .WithMany(u => u.Messages)

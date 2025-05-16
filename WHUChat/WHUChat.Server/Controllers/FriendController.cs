@@ -25,7 +25,6 @@ namespace WHUChat.Server.Controllers
             _logger = logger;
         }
 
-        // Helper to get current user ID from token claims
         private long GetCurrentUserId()
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier) ?? User.FindFirst("id"); // 尝试标准和自定义 claim

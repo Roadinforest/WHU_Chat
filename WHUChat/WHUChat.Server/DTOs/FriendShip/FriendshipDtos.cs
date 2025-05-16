@@ -21,6 +21,7 @@ namespace WHUChat.Server.DTOs.FriendShip
     public class FriendDto
     {
         public long Id { get; set; }
+        public long RoomId { get; set; }
         public string Username { get; set; }
         public string? AvatarUrl { get; set; }
         public DateTime FriendedAt { get; set; } // 成为好友的时间

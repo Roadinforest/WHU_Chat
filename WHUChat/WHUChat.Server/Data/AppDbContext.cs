@@ -80,51 +80,52 @@ namespace WHUChat.Server.Data
                 .OnDelete(DeleteBehavior.Cascade);  // 好友删除时，相关好友关系级联删除
 
 
-            // Room Configuration
+            // 房间实体配置
             modelBuilder.Entity<Room>(entity =>
             {
-                //entity.ToTable("rooms"); // 与你的 SQL 匹配
-                entity.HasKey(r => r.Id);
-                entity.Property(r => r.Name).IsRequired().HasMaxLength(255);
-                entity.Property(r => r.AvatarUrl).HasMaxLength(255);
-                entity.Property(r => r.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+                //entity.ToTable("rooms"); // 可取消注释设置表名
+                entity.HasKey(r => r.Id); // 设置主键为Id字段
+                entity.Property(r => r.Name).IsRequired().HasMaxLength(255); // 房间名称必填，最大长度255
+                entity.Property(r => r.AvatarUrl).HasMaxLength(255); // 头像URL，最大长度255
+                entity.Property(r => r.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP"); // 创建时间默认当前时间
 
-                // Relation to Creator (User)
+                // 与创建者(用户)的关系配置
                 entity.HasOne(r => r.Creator)
-                      .WithMany() // 如果 User 模型没有 ICollection<Room> CreatedRooms 属性
-                                  // .WithMany(u => u.CreatedRooms) // 如果 User 有 CreatedRooms 属性
-                      .HasForeignKey(r => r.CreatorId)
-                      .OnDelete(DeleteBehavior.Cascade); // 或 Restrict/SetNull，取决于业务
+                      .WithMany() // 如果User模型没有ICollection<Room> CreatedRooms属性时使用
+                                  // .WithMany(u => u.CreatedRooms) // 当User有CreatedRooms属性时使用
+                      .HasForeignKey(r => r.CreatorId) // 外键为CreatorId
+                      .OnDelete(DeleteBehavior.Cascade); // 级联删除（根据业务也可设为Restrict/SetNull）
 
-                // Relation to RoomMembers (One-to-Many)
+                // 与房间成员的一对多关系配置
                 entity.HasMany(r => r.RoomMembers)
                       .WithOne(rm => rm.Room)
                       .HasForeignKey(rm => rm.RoomId)
-                      .OnDelete(DeleteBehavior.Cascade);
+                      .OnDelete(DeleteBehavior.Cascade); // 级联删除
             });
 
-
-            // RoomMember Configuration (Composite Key)
+            // 房间成员实体配置（复合主键）
             modelBuilder.Entity<RoomMember>(entity =>
             {
-                entity.ToTable("room_members"); // 与你的 SQL 匹配
-                entity.HasKey(rm => new { rm.RoomId, rm.MemberId }); // 复合主键
+                entity.ToTable("room_members"); // 设置表名与数据库匹配
+                entity.HasKey(rm => new { rm.RoomId, rm.MemberId }); // 设置复合主键(RoomId + MemberId)
 
-                // Relation to Room (Many-to-One)
-                // (already configured by Room's HasMany)
+                // 与房间的多对一关系（已在Room实体中配置）
                 // entity.HasOne(rm => rm.Room)
                 //       .WithMany(r => r.RoomMembers)
                 //       .HasForeignKey(rm => rm.RoomId);
 
-                // Relation to User (Member) (Many-to-One)
+                // 与用户(成员)的多对一关系配置
                 entity.HasOne(rm => rm.Member)
-                      .WithMany(u => u.RoomMembers) // User 模型需要 ICollection<RoomMember> RoomMembers
-                      .HasForeignKey(rm => rm.MemberId)
-                      .OnDelete(DeleteBehavior.Cascade);
+                      .WithMany(u => u.RoomMembers) // User模型需要包含ICollection<RoomMember> RoomMembers属性
+                      .HasForeignKey(rm => rm.MemberId) // 外键为MemberId
+                      .OnDelete(DeleteBehavior.Cascade); // 级联删除
 
-                //如果采纳了数据库建议，可以配置 Role 和 JoinedAt
-                entity.Property(rm => rm.Role).HasConversion<string>().HasDefaultValue(RoomMemberRole.MEMBER);
-                entity.Property(rm => rm.JoinedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+                // 额外配置
+                entity.Property(rm => rm.Role)
+                      .HasConversion<string>() // 将枚举转换为字符串存储
+                      .HasDefaultValue(RoomMemberRole.MEMBER); // 默认角色为MEMBER
+                entity.Property(rm => rm.JoinedAt)
+                      .HasDefaultValueSql("CURRENT_TIMESTAMP"); // 加入时间默认当前时间
             });
 
             modelBuilder.Entity<Message>(entity =>

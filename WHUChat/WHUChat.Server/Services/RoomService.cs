@@ -20,36 +20,6 @@ namespace WHUChat.Server.Services
             _logger = logger;
         }
 
-        //public async Task<RoomResponseDto> CreateRoomAsync(long creatorId, CreateRoomRequestDto dto)
-        //{
-        //    var creator = await _roomRepository.GetUserByIdAsync(creatorId);
-        //    if (creator == null) throw new KeyNotFoundException("创建者用户不存在。");
-
-        //    var room = new Room
-        //    {
-        //        Name = dto.Name,
-        //        AvatarUrl = dto.AvatarUrl,
-        //        CreatorId = creatorId,
-        //        CreatedAt = DateTime.UtcNow
-        //    };
-
-        //    // Repository 的 CreateRoomAsync 内部会把创建者加为成员
-        //    var createdRoom = await _roomRepository.CreateRoomAsync(room);
-        //    // 需要调用 SaveChangesAsync 来实际保存 Room 和初始的 RoomMember
-        //    await _roomRepository.SaveChangesAsync();
-
-
-        //    return new RoomResponseDto
-        //    {
-        //        Id = createdRoom.Id,
-        //        Name = createdRoom.Name,
-        //        AvatarUrl = createdRoom.AvatarUrl,
-        //        CreatedAt = createdRoom.CreatedAt,
-        //        Creator = new UserSimpleDto { Id = creator.Id, Username = creator.Username, AvatarUrl = creator.AvatarUrl },
-        //        MemberCount = 1 // 创建后只有创建者一个成员
-        //    };
-        //}
-
         public async Task<RoomResponseDto> CreateRoomAsync(long creatorId, CreateRoomRequestDto dto)
         {
             var creator = await _roomRepository.GetUserByIdAsync(creatorId);

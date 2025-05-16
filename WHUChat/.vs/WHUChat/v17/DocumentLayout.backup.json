@@ -3,8 +3,41 @@
   "WorkspaceRootPath": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|c:\\users\\devilvoice\\desktop\\whu_chat\\whuchat\\whuchat.server\\repositories\\friendshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\repositories\\friendshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+<<<<<<< HEAD
+      "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|d:\\whu\\projects\\whu_chat\\whuchat\\whuchat.server\\services\\friendservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\services\\friendservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|d:\\whu\\projects\\whu_chat\\whuchat\\whuchat.server\\dtos\\friendship\\friendshipdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\dtos\\friendship\\friendshipdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|d:\\whu\\projects\\whu_chat\\whuchat\\whuchat.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|d:\\whu\\projects\\whu_chat\\whuchat\\whuchat.server\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|d:\\whu\\projects\\whu_chat\\whuchat\\whuchat.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|d:\\whu\\projects\\whu_chat\\whuchat\\whuchat.server\\utils\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\utils\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|d:\\whu\\projects\\whu_chat\\whuchat\\whuchat.server\\repositories\\ifriendshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\repositories\\ifriendshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|c:\\users\\devilvoice\\desktop\\whu_chat\\whuchat\\whuchat.server\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> 6da43cb152d7d6eda20fd386dc8e8aee1fc52581
     },
     {
       "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|c:\\users\\devilvoice\\desktop\\whu_chat\\whuchat\\whuchat.server\\controllers\\friendcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -173,6 +206,7 @@
     {
       "AbsoluteMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|c:\\users\\devilvoice\\desktop\\whu_chat\\whuchat\\whuchat.server\\whuchat.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{5715A406-F4D8-49EB-99DE-C3285D02E0C1}|WHUChat.Server\\WHUChat.Server.csproj|solutionrelative:whuchat.server\\whuchat.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+>>>>>>> 47c106626373e7dbc533ef5e049aa6dc45e7f374
     }
   ],
   "DocumentGroupContainers": [
@@ -186,6 +220,7 @@
           "Children": [
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 3,
               "Title": "IFriendshipRepository.cs",
               "DocumentMoniker": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\Repositories\\IFriendshipRepository.cs",
@@ -207,9 +242,44 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T09:50:35.476Z"
+=======
+              "DocumentIndex": 0,
+<<<<<<< HEAD
+              "Title": "FriendService.cs",
+              "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Services\\FriendService.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Services\\FriendService.cs",
+              "ToolTip": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Services\\FriendService.cs",
+              "RelativeToolTip": "WHUChat.Server\\Services\\FriendService.cs",
+              "ViewState": "AgIAAL8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T07:30:36.906Z",
+=======
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Hubs\\ChatHub.cs",
+              "ToolTip": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "WHUChat.Server\\Hubs\\ChatHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T13:58:33.305Z",
+>>>>>>> 47c106626373e7dbc533ef5e049aa6dc45e7f374
+              "EditorCaption": ""
+>>>>>>> 6da43cb152d7d6eda20fd386dc8e8aee1fc52581
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Models\\User.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Models\\User.cs",
+              "ToolTip": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Models\\User.cs",
+              "RelativeToolTip": "WHUChat.Server\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T07:12:04.869Z",
+              "EditorCaption": ""
+=======
               "DocumentIndex": 4,
               "Title": "FriendService.cs",
               "DocumentMoniker": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\Services\\FriendService.cs",
@@ -319,6 +389,107 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
+=======
+              "DocumentIndex": 14,
+              "Title": "RoomController.cs",
+              "DocumentMoniker": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\Controllers\\RoomController.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Controllers\\RoomController.cs",
+              "ToolTip": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\Controllers\\RoomController.cs",
+              "RelativeToolTip": "WHUChat.Server\\Controllers\\RoomController.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAA1wGwAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T06:25:53.908Z"
+>>>>>>> 47c106626373e7dbc533ef5e049aa6dc45e7f374
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+<<<<<<< HEAD
+              "Title": "Room.cs",
+              "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Models\\Room.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Models\\Room.cs",
+              "ToolTip": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Models\\Room.cs",
+              "RelativeToolTip": "WHUChat.Server\\Models\\Room.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T07:12:00.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Program.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Program.cs",
+              "ToolTip": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Program.cs",
+              "RelativeToolTip": "WHUChat.Server\\Program.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAUwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T06:54:50.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "JwtHelper.cs",
+              "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Utils\\JwtHelper.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Utils\\JwtHelper.cs",
+              "ToolTip": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Utils\\JwtHelper.cs",
+              "RelativeToolTip": "WHUChat.Server\\Utils\\JwtHelper.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T06:54:29.763Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IFriendshipRepository.cs",
+              "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Repositories\\IFriendshipRepository.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Repositories\\IFriendshipRepository.cs",
+              "ToolTip": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\Repositories\\IFriendshipRepository.cs",
+              "RelativeToolTip": "WHUChat.Server\\Repositories\\IFriendshipRepository.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAIwBAAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T06:48:39.828Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FriendshipDtos.cs",
+              "DocumentMoniker": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\DTOs\\FriendShip\\FriendshipDtos.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\DTOs\\FriendShip\\FriendshipDtos.cs",
+              "ToolTip": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\DTOs\\FriendShip\\FriendshipDtos.cs",
+              "RelativeToolTip": "WHUChat.Server\\DTOs\\FriendShip\\FriendshipDtos.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAmwBcAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T07:18:22.817Z",
+              "EditorCaption": ""
+=======
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\Controllers\\ChatController.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Controllers\\ChatController.cs",
+              "ToolTip": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\Controllers\\ChatController.cs",
+              "RelativeToolTip": "WHUChat.Server\\Controllers\\ChatController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAwCsAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T15:09:49.452Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Room.cs",
+              "DocumentMoniker": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\Models\\Room.cs",
+              "RelativeDocumentMoniker": "WHUChat.Server\\Models\\Room.cs",
+              "ToolTip": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\Models\\Room.cs",
+              "RelativeToolTip": "WHUChat.Server\\Models\\Room.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvxgAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T14:18:17.815Z"
+            },
+            {
+              "$type": "Document",
+>>>>>>> 6da43cb152d7d6eda20fd386dc8e8aee1fc52581
               "DocumentIndex": 11,
               "Title": "FriendRequest.cs",
               "DocumentMoniker": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\Models\\FriendRequest.cs",
@@ -700,6 +871,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-05-13T08:28:17.748Z"
+>>>>>>> 47c106626373e7dbc533ef5e049aa6dc45e7f374
             }
           ]
         }

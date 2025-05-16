@@ -100,3 +100,7 @@ secrets.json
 # Backup & crash logs
 *.bak
 *.dmp
+
+
+# 忽略 whuchat.client 目录
+whuchat.client/

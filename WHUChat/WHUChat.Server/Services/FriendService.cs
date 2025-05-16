@@ -174,6 +174,7 @@ namespace WHUChat.Server.Services
             {
                 Id = rel.FriendId, // 好友的 ID
                 Username = rel.Friend?.Username ?? "未知好友", // 从 Include 的 Friend 获取
+                RoomId = rel.RoomId, // 与好友的私聊房间
                 AvatarUrl = rel.Friend?.AvatarUrl,
                 FriendedAt = rel.CreatedAt // 好友关系创建时间
             }).ToList();

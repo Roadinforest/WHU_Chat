@@ -3779,23 +3779,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DevilVoice\\.nuget\\packages\\": {},
-    "D:\\Visual_Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\vkswh\\.nuget\\packages\\": {},
+    "D:\\3VS2019\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
+      "projectUniqueName": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
       "projectName": "WHUChat.Server",
-      "projectPath": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
-      "packagesPath": "C:\\Users\\DevilVoice\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DevilVoice\\Desktop\\WHU_Chat\\WHUChat\\WHUChat.Server\\obj\\",
+      "projectPath": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\WHUChat.Server.csproj",
+      "packagesPath": "C:\\Users\\vkswh\\.nuget\\packages\\",
+      "outputPath": "D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Visual_Studio\\Shared\\NuGetPackages"
+        "D:\\3VS2019\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\DevilVoice\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vkswh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3874,7 +3874,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-<<<<<<< HEAD
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
@@ -3893,8 +3892,6 @@
             "version": "[8.0.16, 8.0.16]"
           }
         ],
-=======
->>>>>>> 47c106626373e7dbc533ef5e049aa6dc45e7f374
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -3906,5 +3903,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "读取缓存文件 D:\\WHU\\Projects\\WHU_Chat\\WHUChat\\WHUChat.Server\\obj\\project.nuget.cache 时遇到问题: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

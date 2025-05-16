@@ -20,5 +20,7 @@ namespace WHUChat.Server.Repositories
         Task DeleteFriendRelationsAsync(long userId, long friendId); // More direct approach (optional)
 
         Task DeleteFriendRequestsBetweenAsync(long userId1, long userId2); // 删除两人间的所有请求
+
+        Task CreatePrivateRoom(long roomId,long userId1,long userId2 );
     }
 }

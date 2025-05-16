@@ -164,6 +164,13 @@ namespace WHUChat.Server.Repositories
             }
             // 不需要调用 SaveChangesAsync()，由 Service 层统一处理
         }
+
+        public async Task CreatePrivateRoom(long roomId,long userId1,long userId2) {
+            await _context.FriendRelations.Where(fr => fr.UserId == userId1&&fr.FriendId==userId2).ExecuteUpdateAsync(s => s.SetProperty(fr => fr.RoomId, roomId));
+            await _context.FriendRelations.Where(fr => fr.UserId == userId2&&fr.FriendId==userId1).ExecuteUpdateAsync(s => s.SetProperty(fr => fr.RoomId, roomId));
+
+
+        }
     }
 }
 

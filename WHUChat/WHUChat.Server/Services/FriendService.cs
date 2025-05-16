@@ -251,6 +251,10 @@ namespace WHUChat.Server.Services
             await _friendshipRepository.SaveChangesAsync();
         }
 
+        public async Task InsertPrivateRoom(long roomId,long userId1, long userId2) {
+            await _friendshipRepository.CreatePrivateRoom(roomId, userId1, userId2);
+            await _friendshipRepository.SaveChangesAsync();
+        }
     }
 }
 

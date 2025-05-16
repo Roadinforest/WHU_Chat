@@ -16,16 +16,6 @@ namespace WHUChat.Server.Repositories
             _context = context;
         }
 
-        //public async Task<Room> CreateRoomAsync(Room room)
-        //{
-        //    await _context.Rooms.AddAsync(room);
-        //    // 创建者自动成为成员，这一步也可以在 Service 层处理
-        //    // 如果采纳了 role 建议，这里应设置创建者为 ADMIN
-        //    var initialMember = new RoomMember { RoomId = room.Id, MemberId = room.CreatorId };
-        //    await _context.RoomMembers.AddAsync(initialMember);
-        //    return room;
-        //}
-
         public async Task<Room> CreateRoomAsync(Room roomWithInitialMember)
         {
             // 假设 roomWithInitialMember.RoomMembers 集合已经包含了初始成员
@@ -68,17 +58,6 @@ namespace WHUChat.Server.Repositories
             }
             return false;
         }
-
-        //public async Task<List<Room>> GetRoomsForUserAsync(long userId)
-        //{
-        //    return await _context.RoomMembers
-        //        .Where(rm => rm.MemberId == userId)
-        //        .Select(rm => rm.Room)
-        //        .Include(r => r.Creator) // 加载每个房间的创建者
-        //        .Include(r => r.RoomMembers) // 按需加载成员数量或列表，可能会导致数据量过大
-        //        .OrderByDescending(r => r.CreatedAt)
-        //        .ToListAsync();
-        //}
 
         public async Task<List<Room>> GetRoomsForUserAsync(long userId)
         {

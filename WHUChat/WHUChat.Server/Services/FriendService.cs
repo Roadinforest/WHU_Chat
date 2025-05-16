@@ -178,47 +178,6 @@ namespace WHUChat.Server.Services
                 FriendedAt = rel.CreatedAt // 好友关系创建时间
             }).ToList();
         }
-
-        //public async Task DeleteFriendAsync(long userId, long friendId)
-        //{
-        //    // 1. Validation: Cannot delete self
-        //    if (userId == friendId)
-        //    {
-        //        throw new ArgumentException("不能删除自己作为好友。");
-        //    }
-
-        //    // 2. Validation: Check if the 'friend' user exists (optional but good practice)
-        //    var friendUser = await _friendshipRepository.GetUserByIdAsync(friendId);
-        //    if (friendUser == null)
-        //    {
-        //        // Depending on requirements, you might allow deleting relations even if user is deleted,
-        //        // or throw an error. Let's throw for clarity.
-        //        throw new KeyNotFoundException("指定的好友用户不存在。");
-        //    }
-
-
-        //    // 3. Perform deletion using the repository
-        //    // We'll use the direct deletion method from the repository
-        //    bool relationsFound = await _friendshipRepository.DeleteFriendRelationsAsync(userId, friendId);
-
-        //    // 4. Check if they were actually friends
-        //    if (!relationsFound)
-        //    {
-        //        // If no relations were found, they weren't friends to begin with.
-        //        throw new InvalidOperationException("你们不是好友关系。");
-        //    }
-
-        //    // 5. Save changes to the database
-        //    // This commits the deletions marked in the repository method.
-        //    await _friendshipRepository.SaveChangesAsync();
-
-        //    // Optional: Consider if you want to delete/reject pending friend requests
-        //    // between these two users after deleting the friendship.
-        //    // Example (Conceptual - needs corresponding repo methods):
-        //    // await _friendshipRepository.DeletePendingRequestsBetween(userId, friendId);
-        //    // await _friendshipRepository.SaveChangesAsync();
-        //}
-
         public async Task DeleteFriendAsync(long userId, long friendId)
         {
             if (userId == friendId) throw new ArgumentException("不能删除自己作为好友。");

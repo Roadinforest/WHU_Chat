@@ -15,7 +15,6 @@ namespace WHUChat.Server.Repositories
         Task<List<RoomMember>> GetMembersInRoomAsync(long roomId); // 获取房间的所有成员关系
         Task<User?> GetUserByIdAsync(long userId); // 通常可能在 IUserRepository
         Task<int> GetRoomMemberCountAsync(long roomId);
-
         Task SaveChangesAsync();
     }
 }

@@ -9,7 +9,6 @@ namespace WHUChat.Server.Models
         public DateTime CreatedAt { get; set; }
         public string Content { get; set; }
         public string ResUrl { get; set; }
-
         public User User { get; set; }
     }
 }

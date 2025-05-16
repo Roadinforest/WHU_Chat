@@ -101,37 +101,11 @@ namespace WHUChat.Server.Repositories
                 .FirstOrDefaultAsync(fr => fr.UserId == userId && fr.FriendId == friendId);
         }
 
-        // Option 1: Method to just mark for deletion (requires service to fetch first)
         public void DeleteFriendRelation(FriendRelation relation)
         {
             _context.FriendRelations.Remove(relation);
         }
 
-
-        //// Option 2: Direct deletion logic (Preferred for this case)
-        //public async Task<bool> DeleteFriendRelationsAsync(long userId, long friendId)
-        //{
-        //    // Find both relationship entries
-        //    var relation1 = await _context.FriendRelations
-        //        .FirstOrDefaultAsync(fr => fr.UserId == userId && fr.FriendId == friendId);
-        //    var relation2 = await _context.FriendRelations
-        //        .FirstOrDefaultAsync(fr => fr.UserId == friendId && fr.FriendId == userId);
-
-        //    bool deleted = false;
-        //    if (relation1 != null)
-        //    {
-        //        _context.FriendRelations.Remove(relation1);
-        //        deleted = true; // Mark that at least one relation was found
-        //    }
-        //    if (relation2 != null)
-        //    {
-        //        _context.FriendRelations.Remove(relation2);
-        //        deleted = true; // Mark that at least one relation was found
-        //    }
-
-        //    // We don't call SaveChangesAsync here; the service layer will do that.
-        //    return deleted; // Return true if any relation was found and marked for deletion
-        //}
 
         public async Task DeleteFriendRelationsAsync(long userId, long friendId)
         {

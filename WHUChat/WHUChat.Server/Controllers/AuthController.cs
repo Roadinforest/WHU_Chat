@@ -2,6 +2,7 @@
 using WHUChat.Server.Services;
 using WHUChat.Server.DTOs;
 using WHUChat.Server.Common;
+using WHUChat.Server.Models;
 
 
 namespace WHUChat.Server.Controllers
@@ -11,11 +12,13 @@ namespace WHUChat.Server.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly IChatService _chatService;
         private readonly ILogger<AuthController> _logger;
-        public AuthController(IUserService userService, ILogger<AuthController> logger)
+        public AuthController(IUserService userService, ILogger<AuthController> logger, IChatService chatService)
         {
             _userService = userService;
             _logger = logger;
+            _chatService = chatService;
         }
 
         [HttpPost("register")]
@@ -44,7 +47,7 @@ namespace WHUChat.Server.Controllers
             catch (Exception ex)
             {
                 _logger.LogInformation(ex.Message);
-                return Result<string>.Fail("注册失败");
+                return Result<string>.Fail("登录失败");
             }
             return Result<string>.Ok(token, "登陆成功");
         }

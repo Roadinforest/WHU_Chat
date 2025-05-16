@@ -1,4 +1,5 @@
-﻿using WHUChat.Server.DTOs.FriendShip;
+﻿using System.Data.SqlTypes;
+using WHUChat.Server.DTOs.FriendShip;
 using WHUChat.Server.Models;
 using WHUChat.Server.Repositories;
 
@@ -105,10 +106,11 @@ namespace WHUChat.Server.Services
                 if (await _friendshipRepository.AreUsersFriendsAsync(senderId, receiverId))
                 {
                     // 如果已经是好友，可能只需更新请求状态即可，或者抛出异常
-                    await _friendshipRepository.SaveChangesAsync(); // 仅保存请求状态的更新
-                                                                    // 可以选择记录日志或抛出特定异常
-                    Console.WriteLine($"Warning: Users {senderId} and {receiverId} were already friends when accepting request.");
-                    return; // 或者根据业务逻辑决定是否继续
+                    throw new SqlAlreadyFilledException("双方已经成为好友。");
+                    //await _friendshipRepository.SaveChangesAsync(); // 仅保存请求状态的更新
+                    //                                                // 可以选择记录日志或抛出特定异常
+                    //Console.WriteLine($"Warning: Users {senderId} and {receiverId} were already friends when accepting request.");
+                    //return; // 或者根据业务逻辑决定是否继续
                 }
 
                 var relation1 = new FriendRelation { UserId = senderId, FriendId = receiverId, CreatedAt = DateTime.UtcNow };

@@ -22,6 +22,6 @@ namespace WHUChat.Server.Models
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public ICollection<RoomMember> RoomMembers { get; set; } = new List<RoomMember>();
-        public ICollection<Message> Messages { get; set; } // 如果有房间消息的话
+        public ICollection<Message> Messages { get; set; }// 如果有房间消息的话
     }
 }

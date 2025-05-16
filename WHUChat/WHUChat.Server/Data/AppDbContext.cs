@@ -28,6 +28,7 @@ namespace WHUChat.Server.Data
             modelBuilder.Entity<FriendRequest>().ToTable("friend_requests");
             modelBuilder.Entity<RoomMember>().ToTable("room_members");
             modelBuilder.Entity<Room>().ToTable("rooms");
+            modelBuilder.Entity<Message>().ToTable("messages");
 
             // 全局配置：将所有属性名转换为小写字母加下划线
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
@@ -127,6 +128,21 @@ namespace WHUChat.Server.Data
                       .HasDefaultValueSql("CURRENT_TIMESTAMP"); // 加入时间默认当前时间
             });
 
+            modelBuilder.Entity<Message>(entity =>
+            {
+                entity.HasKey(m => m.Id);
+                entity.Property(m => m.Content).IsRequired().HasMaxLength(255);
+                entity.Property(m=>m.Username).IsRequired().HasMaxLength(255);
+                //entity.Property(m => m.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                //entity.HasOne(m => m.User)
+                //.WithMany(u => u.Messages);//一个用户对应多个消息
+
+                entity.HasOne(m => m.Room)
+                .WithMany(u => u.Messages)
+                .HasForeignKey(m => m.RoomId)
+                .OnDelete(DeleteBehavior.Cascade);//一个房间对应多个消息，用RoomId关联
+            });
 
         }
 

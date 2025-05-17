@@ -6,14 +6,13 @@
     <el-button class="button" type="primary" @click="select('friend-list')">好友</el-button>
     <el-button class="button" type="primary" @click="select('chat-room')">聊天室</el-button>
     <!-- <el-button class="button" type="primary" @click="select('create-chat-room')">聊天室新建</el-button> -->
-    <el-button class="button" type="primary" @click="select('friend-search')">朋友搜索</el-button>
-    <el-button class="button" type="primary" @click="select('friend-request')">好友请求</el-button>
-    <RoomCreateButton class="button"/>
+    <!-- <el-button class="button" type="primary" @click="select('friend-search')">朋友搜索</el-button> -->
+    <!-- <el-button class="button" type="primary" @click="select('friend-request')">好友请求</el-button> -->
+    <!-- <RoomCreateButton class="button"/> -->
   </aside>
 </template>
 
 <script setup>
-import RoomCreateButton from '@/components/room/RoomCreateButton.vue'
 import UserHeader from '@/components/user/userHeader.vue'
 import { ElDivider } from 'element-plus'
 import { defineEmits } from 'vue'

@@ -7,6 +7,17 @@
 </template>
 
 <script setup>
+import { onBeforeUnmount, onMounted } from 'vue';
+import AuthService from './services/AuthService.js'
+
+onMounted(async () => {
+  const token=await AuthService.getToken()
+  console.log("token(should be null)",token)
+})
+
+onBeforeUnmount(async () => {
+  await AuthService.logout()
+})
 </script>
 
 

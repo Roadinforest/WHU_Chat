@@ -8,7 +8,7 @@ const RoomService = {
       const avatarUrl =
         "https://www.shutterstock.com/zh/image-photo/morrocan-turquoise-pottery-ceramics-small-traditional-2463718269";
       const response = await api.post("/room", { name, avatarUrl });
-      console.log("Room created successfully:", response.data);
+      // console.log("Room created successfully:", response.data);
       return response.data;
     } catch (error) {
       this.handleError(error);
@@ -18,7 +18,7 @@ const RoomService = {
   async getJoinedRoom() {
     try {
       const response = await api.get("/room/joined");
-      console.log("Joined rooms:", response.data);
+      // console.log("Joined rooms:", response.data);
       return response.data;
     } catch (error) {
       this.handleError(error);
@@ -28,7 +28,7 @@ const RoomService = {
   async joinRoom(roomId) {
     try {
       const response = await api.post(`/room/${roomId}/join`);
-      console.log(`Joined room ${roomId} successfully!`);
+      // console.log(`Joined room ${roomId} successfully!`);
       return response.data;
     } catch (error) {
       this.handleError(error);
@@ -59,12 +59,23 @@ const RoomService = {
   async leaveRoom(roomId) {
     try {
       const response = await api.delete(`/room/${roomId}/leave`);
-      console.log(`Left room ${roomId} successfully!`);
+      // console.log(`Left room ${roomId} successfully!`);
       return response.data;
     } catch (error) {
       this.handleError(error);
     }
   },
+
+  async getHistory(roomId){
+    try {
+      const response = await api.post('/Chat/get_history',{roomId});
+      // console.log(`History of room ${roomId}:`, response.data);
+      return response.data;
+    }catch(error){
+      this.handleError(error);
+    }
+  }
 };
+
 
 export default RoomService;

@@ -38,20 +38,17 @@ const onSubmit = async () => {
   await formRef.value.validate()
 
   try {
-    let res;
     if (mode === 'login') {
-      res = await AuthService.login(form.value);
-      localStorage.setItem('token', res.data.token);
+      await AuthService.login(form.value);
       ElMessage.success('登录成功');
       emit('success')
     } else if (mode === 'register') {
-      res = await AuthService.register(form.value);
+      await AuthService.register(form.value);
       ElMessage.success('注册成功');
       router.push('/login');
     }
   } catch (e) {
     console.error(e); // 输出错误详情
-    ElMessage.error(mode === 'login' ? '登录失败' : '注册失败');
   }
 }
 </script>

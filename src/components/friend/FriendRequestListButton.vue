@@ -1,5 +1,12 @@
 <!-- src/components/chat/FriendRequestList.vue -->
 <template>
+  <el-button class="button" type="primary" @click="showRequestDialog= true">
+    好友申请清单
+  </el-button>
+  
+  <el-dialog title="添加好友" v-model="showRequestDialog">
+  <div class="search-tab">
+
   <div class="request-list">
     <h3>好友请求</h3>
     <div v-if="requests.length === 0">暂无好友请求</div>
@@ -13,6 +20,8 @@
       </div>
     </div>
   </div>
+  </div>
+  </el-dialog>
 </template>
 
 <script setup>
@@ -20,6 +29,7 @@ import { ref, onMounted } from 'vue'
 import FriendService from '@/services/FriendService'
 
 const requests = ref([])
+const showRequestDialog = ref(false)
 
 const fetchRequests = async () => {
   const res = await FriendService.getReceivedRequests()

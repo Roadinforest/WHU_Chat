@@ -1,10 +1,12 @@
 // src/services/FriendService.js
 import api from '@/utils/api/api.js';
+import { ElMessage } from 'element-plus';
 
 const FriendService = {
   async getFriendList() {
     try {
       const res = await api.get('/friend/list');
+      console.log('Friend list:', res.data);
       return res.data;
     } catch (error) {
       console.error('Error fetching friend list:', error);
@@ -15,10 +17,9 @@ const FriendService = {
   async sendFriendRequest(receiverId) {
     try {
       const res = await api.post('/friend/send-request', { receiverId });
-      return res;
+      return res.data;
     } catch (error) {
-      console.error('Error sending friend request:', error);
-      throw error;
+      throw error.response.data.message;
     }
   },
 

@@ -6,11 +6,8 @@
     <div class="main-content">
 
       <ChatView class="friend-list" v-if="currentPage === 'friend-list'" />
-      <RoomCreateView  v-else-if="currentPage === 'create-chat-room'" />
       <RoomView  v-else-if="currentPage === 'chat-room'" />
 
-      <FriendSearch v-else-if="currentPage === 'friend-search'" />
-      <FriendRequestList v-else-if="currentPage === 'friend-request'" />
     </div>
   </div>
 </template>
@@ -18,12 +15,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import FriendRequestList from '@/components/friend/FriendRequestList.vue'
-import FriendSearch from '@/components/friend/FriendSearch.vue'
 import ChatView from '@/views/ChatView.vue'
 import SiderBar from './SiderBar.vue'
 import RoomView from './RoomView.vue'
-import RoomCreateView from './RoomCreateView.vue'
 
 const currentPage = ref('friend-list') // 默认页面
 

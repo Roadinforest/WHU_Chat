@@ -1,10 +1,10 @@
 <!-- src/components/RoomChatWindow.vue -->
 <template>
   <div class="chat-window">
-    <h3>聊天室 #{{ props.roomName }}-{{ props.roomId }}</h3>
+    <h3>{{ props.roomName }}-{{ props.roomId }}</h3>
     <div class="message-box">
       <div v-for="(msg, index) in messages" :key="index">
-        <strong>{{ msg.username }}：</strong> {{ msg.content }}
+        <strong>{{ msg.userName }}：</strong> {{ msg.content }}
       </div>
     </div>
 
@@ -19,31 +19,50 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import signalRService from '@/services/SignalRService'
+import RoomService from '@/services/RoomService'
 
 const props = defineProps(["roomId", "roomName"])
 const messages = ref([])
 const inputMessage = ref("")
 
+// const receiveHandler = (username, content, resUrl) => {
+//   messages.value.push({ username, content, resUrl })
+// }
+
 const receiveHandler = (username, content, resUrl) => {
-  messages.value.push({ username, content, resUrl })
-}
+  messages.value.push({
+    userName: username, // 映射字段名
+    content,
+    resUrl
+  });
+};
+
+
+onMounted(async () => {
+  await signalRService.startConnection()
+  signalRService.connection.on('ReceiveMessage', receiveHandler)
+  await signalRService.entryRoom(props.roomId)
+  const res = await RoomService.getHistory(props.roomId)
+  messages.value = res.data
+})
 
 // 监听房间变化并进入对应房间
 watch(
   () => props.roomId,
   async (newId, oldId) => {
+    console.log("roomId changed")
     if (oldId) await signalRService.quitRoom(oldId)
     if (newId) {
       await signalRService.entryRoom(newId)
       messages.value = [] // 清空旧房间记录
+      
+      const res  = await RoomService.getHistory(newId)
+      messages.value = res.data
+      console.log("messages: ", messages.value)
+
     }
   }
 )
-
-onMounted(async () => {
-  await signalRService.startConnection()
-  signalRService.connection.on('ReceiveMessage', receiveHandler)
-})
 
 onBeforeUnmount(async () => {
   await signalRService.quitRoom(props.roomId)

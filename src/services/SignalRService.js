@@ -57,6 +57,8 @@ class SignalRService {
       console.log(`Entered room ${roomId}`)
     } catch (err) {
       console.error(' Failed to enter room:', err)
+      this.startConnection()
+      this.entryRoom(roomId)
     }
   }
 
@@ -83,6 +85,8 @@ class SignalRService {
       , String(resUrl))
     } catch (err) {
       console.error('SendMessage failed:', err)
+      this.startConnection()
+      this.entryRoom(roomId)
     }
   }
 

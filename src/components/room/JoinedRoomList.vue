@@ -1,12 +1,15 @@
 <!-- src/components/JoinedRoomList.vue -->
 <template>
   <el-dialog v-model="dialogVisible" title="邀请好友" width="30%">
-    <InviteFriendList :roomId="selectedId" />
+    <InviteFriendList v-if="dialogVisible"  :roomId="selectedId" />
   </el-dialog>
 
 
   <div class="room-list">
-    <h3>我的聊天室</h3>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h3>我的聊天室</h3>
+      <RoomCreateButton @create-room="fetchRooms" />
+    </div>
     <el-menu :default-active="selectedId?.toString()" @select="onSelect">
       <el-menu-item v-for="room in rooms" :key="room.id" :index="room.id.toString()">
 
@@ -29,7 +32,6 @@
         </div>
       </el-menu-item>
     </el-menu>
-    <RoomCreateButton />
   </div>
 </template>
 

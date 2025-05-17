@@ -1,7 +1,12 @@
 <!-- src/components/RoomChatWindow.vue -->
 <template>
   <div class="chat-window">
-    <h3>{{ props.roomName }}-{{ props.roomId }}</h3>
+
+    <div style="display: flex; align-items: center;justify-content: space-between; margin: 0 5% 0 5%;">
+      <h3>{{ props.roomName }}-{{ props.roomId }}</h3>
+      <RoomMemberListButton :roomId="props.roomId" />
+    </div>
+
     <div class="message-box">
       <div v-for="(msg, index) in messages" :key="index">
         <strong>{{ msg.userName }}：</strong> {{ msg.content }}
@@ -20,6 +25,7 @@
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import signalRService from '@/services/SignalRService'
 import RoomService from '@/services/RoomService'
+import RoomMemberListButton from './RoomMemberListButton.vue'
 
 const props = defineProps(["roomId", "roomName"])
 const messages = ref([])
@@ -55,8 +61,8 @@ watch(
     if (newId) {
       await signalRService.entryRoom(newId)
       messages.value = [] // 清空旧房间记录
-      
-      const res  = await RoomService.getHistory(newId)
+
+      const res = await RoomService.getHistory(newId)
       messages.value = res.data
       console.log("messages: ", messages.value)
 

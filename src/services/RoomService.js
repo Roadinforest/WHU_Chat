@@ -1,6 +1,5 @@
 // src/services/RoomService.js
 import api from "@/utils/api/api"
-import { invalidateTypeCache } from "vue/compiler-sfc";
 
 const RoomService = {
   async createRoom({ name }) {
@@ -38,7 +37,7 @@ const RoomService = {
   async getRoomMember(roomId) {
     try {
       const response = await api.get(`/room/${roomId}/members`);
-      console.log(`Room members of ${roomId}:`, response.data);
+      // console.log(`Room members of ${roomId}:`, response.data);
       return response.data;
     } catch (error) {
       this.handleError(error);

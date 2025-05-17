@@ -1,8 +1,12 @@
 <!-- src/components/friend/FriendSearch.vue -->
 <template>
-  <el-button class="button" type="primary" @click="showAddFriendDialog = true">
+  <!-- <el-button class="button" type="primary" @click="showAddFriendDialog = true">
     添加好友
-  </el-button>
+  </el-button> -->
+
+  <el-icon size="25">
+    <CirclePlus @click="showAddFriendDialog = true"/>
+  </el-icon>
   
   <el-dialog title="添加好友" v-model="showAddFriendDialog">
   <div class="search-tab">

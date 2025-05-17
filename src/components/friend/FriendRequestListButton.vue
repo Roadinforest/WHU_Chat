@@ -1,8 +1,12 @@
 <!-- src/components/chat/FriendRequestList.vue -->
 <template>
-  <el-button class="button" type="primary" @click="showRequestDialog= true">
+  <!-- <el-button class="button" type="primary" @click="showRequestDialog= true">
     好友申请清单
-  </el-button>
+  </el-button> -->
+
+  <el-icon size="25">
+    <Message @click="showRequestDialog= true"/> 
+  </el-icon>
   
   <el-dialog title="添加好友" v-model="showRequestDialog">
   <div class="search-tab">

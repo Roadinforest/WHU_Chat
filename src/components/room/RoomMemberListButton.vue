@@ -25,16 +25,13 @@ const showFriendListDialog = ref(false);
 const memberList = ref([]);
 
 onMounted(async () => {
-  console.log("Hello!!!")
   const res = await RoomService.getRoomMember(props.roomId)
-  console.log("Hello", memberList.value)
   memberList.value = res.data
 });
 
 watch(() => props.roomId, async () => {
   const res = await RoomService.getRoomMember(props.roomId)
   memberList.value = res.data
-  console.log("Hello", memberList.value)
 })
 
 </script>

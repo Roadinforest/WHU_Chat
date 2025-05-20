@@ -31,7 +31,7 @@ onMounted(async () => {
   align-items: center;
   padding: 16px 12px;
   border-bottom: 1px solid #ddd;
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8; */
 }
 
 .avatar {

@@ -42,7 +42,7 @@ class SignalRService {
    */
   registerListeners() {
     this.connection.on('ReceiveMessage', (username, message, resUrl) => {
-      console.log(` [${username}] ${message}`)
+      // console.log(` [${username}] ${message}`)
       // 可触发事件或调用回调更新UI
     })
   }
@@ -54,7 +54,7 @@ class SignalRService {
     if (!this.connection) return
     try {
       await this.connection.invoke('EntryRoom', String(roomId))
-      console.log(`Entered room ${roomId}`)
+      // console.log(`Entered room ${roomId}`)
     } catch (err) {
       console.error(' Failed to enter room:', err)
       this.startConnection()
@@ -69,7 +69,7 @@ class SignalRService {
     if (!this.connection) return
     try {
       await this.connection.invoke('QuitFromRoom',String(roomId))
-      console.log(`Left room ${roomId}`)
+      // console.log(`Left room ${roomId}`)
     } catch (err) {
       console.error('Failed to leave room:', err)
     }
@@ -94,7 +94,7 @@ class SignalRService {
     if (this.connection) {
       await this.connection.stop()
       this.isConnected = false
-      console.log('SignalR disconnected.')
+      // console.log('SignalR disconnected.')
     }
   }
 }

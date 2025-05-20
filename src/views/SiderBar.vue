@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import UserHeader from '@/components/user/userHeader.vue'
+import UserHeader from '@/components/user/UserHeader.vue'
 import { ElDivider } from 'element-plus'
 import { defineEmits } from 'vue'
 
@@ -26,8 +26,8 @@ const select = (page) => {
 
 <style scoped>
 .sidebar {
-  width: 20vw;
-  background-color: rgb(231, 238, 241);
+  width: 15vw;
+  /* background-color: rgb(231, 238, 241); */
   padding: 10px;
 }
 

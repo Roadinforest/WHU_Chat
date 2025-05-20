@@ -1,7 +1,7 @@
 <!-- src/components/JoinedRoomList.vue -->
 <template>
   <el-dialog v-model="dialogVisible" title="邀请好友" width="30%">
-    <InviteFriendList v-if="dialogVisible"  :roomId="selectedId" />
+    <InviteFriendList v-if="dialogVisible" :roomId="selectedId" />
   </el-dialog>
 
 
@@ -18,16 +18,18 @@
 
           {{ room.name }}
 
-          <el-icon>
-            <Delete @click="deleteRom(room.id)" />
-          </el-icon>
+
+          <div>
+            <el-icon>
+              <Delete @click="deleteRom(room.id)" />
+            </el-icon>
 
 
-          <el-icon>
-            <Plus @click="handleAddMember(room.id)" />
-          </el-icon>
+            <el-icon>
+              <Plus @click="handleAddMember(room.id)" />
+            </el-icon>
 
-
+          </div>
 
         </div>
       </el-menu-item>

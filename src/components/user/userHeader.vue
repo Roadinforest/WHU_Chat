@@ -30,7 +30,8 @@ onMounted(async () => {
   display: flex;
   align-items: center;
   padding: 16px 12px;
-  border-bottom: 1px solid #ddd;
+  border: 2px solid #ddd;
+  border-radius: 20px;
   /* background-color: #f8f8f8; */
 }
 

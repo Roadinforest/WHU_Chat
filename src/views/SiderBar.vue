@@ -29,11 +29,17 @@ const select = (page) => {
   width: 15vw;
   /* background-color: rgb(231, 238, 241); */
   padding: 10px;
+  height: 95%;
+  background-color: rgba(255, 255, 255, 0.3); 
+  border: 2px solid #ddd;
+  border-radius: 20px;
 }
 
 .button {
   display: block;
   width: 90%;
   margin: 0px 20px 10px 10px;
+  background-color:grey;
+  border-color: grey;
 }
 </style>

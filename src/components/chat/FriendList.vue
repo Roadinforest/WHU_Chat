@@ -62,8 +62,11 @@ onMounted(async () => {
 .friend-list {
   /* width: 250px; */
   width: 20vw;
-  border-right: 1px solid #ccc;
+  border: 2px solid #ccc;
+  border-radius: 20px;
   padding: 1rem;
+  height: 95%;
+  margin-right: 1%;
 }
 
 .item-container {
@@ -72,4 +75,5 @@ onMounted(async () => {
   align-items: center;
   justify-content: space-between;
 }
+
 </style>

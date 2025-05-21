@@ -24,6 +24,8 @@ const handleSelectRoom = (room) => {
 <style scoped>
 .room-chat-container {
   display: flex;
-  height: 100vh;
+  height: 95vh;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.3); 
 }
 </style>

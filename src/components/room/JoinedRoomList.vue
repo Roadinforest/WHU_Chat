@@ -65,12 +65,17 @@ const fetchRooms = async () => {
 }
 
 const onSelect = (idStr) => {
-  const id = parseInt(idStr)
-  const room = rooms.value.find((r) => r.id === id)
-  if (room) {
-    selectedId.value = id
-    emit('select-room', { id: room.id, name: room.name })
+  const id = parseInt(idStr);
+  const roomIndex = rooms.value.findIndex((r) => r.id === id);
+
+  if (roomIndex > -1) {
+    const [selectedRoom] = rooms.value.splice(roomIndex, 1);
+    rooms.value.unshift(selectedRoom);
+
+    selectedId.value = id;
+    emit('select-room', { id: selectedRoom.id, name: selectedRoom.name });
   }
+
 }
 
 const deleteRom = async (id) => {
@@ -88,8 +93,12 @@ onMounted(fetchRooms)
 <style scoped>
 .room-list {
   width: 20vw;
-  border-right: 1px solid #ccc;
   padding: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  padding: 1rem;
+  height: 95%;
+  margin-right: 1%;
 }
 
 .room-container {

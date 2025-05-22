@@ -16,7 +16,7 @@
 
 <script setup>
 import {ref} from 'vue'
-import FriendList from '@/components/chat/FriendList.vue'
+import FriendList from '@/components/friend/FriendList.vue'
 import RoomChatWindow from '@/components/room/RoomChatWindow.vue'
 
 
@@ -41,7 +41,7 @@ const handleSelectRoom = (room) => {
 <style scoped>
 .chat-container {
   display: flex;
-  height: 100vh;
+  height: 95vh;
   border-radius: 25px;
   background-color: rgba(255, 255, 255, 0.3); 
 }

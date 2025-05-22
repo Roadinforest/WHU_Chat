@@ -27,10 +27,8 @@
 
       <div v-else>
         <div class="message-item other-message">
-          <div class="message-wrapper">
             <span class="username">系统</span>
             <div class="message-bubble">你们暂时还没有开始聊天哦</div>
-          </div>
           </div>
       </div>
 
@@ -38,7 +36,7 @@
 
 
     <div class="message-sender">
-      <el-input v-model="inputMessage" placeholder="输入消息..." @keyup.enter="sendMsg" style="margin-left:5%" />
+      <el-input type="textarea" v-model="inputMessage" placeholder="输入消息..." @keyup.enter="sendMsg" style="margin-left:5%" />
       <div style="width:5%"></div>
       <el-button style="margin-right:5%" @click="sendMsg" type="primary">发送</el-button>
     </div>
@@ -146,7 +144,7 @@ const sendMsg = async () => {
   height: 60vh;
   border: 1px solid #eee;
   border-radius: 25px;
-  margin: 5%;
+  margin: 2% 5% 2% 5%;
   flex: 1;
   overflow-y: auto;
   padding: 10px;
@@ -165,6 +163,7 @@ const sendMsg = async () => {
   flex: 1;
   height: 95%;
   padding: 10px;
+  width: 30vw;
 
   border: 2px solid #ddd;
   border-radius: 20px;
@@ -178,25 +177,28 @@ const sendMsg = async () => {
   margin: 8px 0;
 }
 
-/* 自己的消息靠右显示 */
+/* 自己的消息整体靠右显示 */
 .my-message {
   justify-content: flex-end;
 }
 
-/* 别人的消息靠左显示 */
+/* 别人的消息整体靠左显示 */
 .other-message {
   justify-content: flex-start;
 }
 
-/* 消息气泡框样式 */
 .message-bubble {
-  max-width: 90%;
   padding: 10px 14px;
   border-radius: 18px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   word-wrap: break-word;
+  word-break: break-word;
   white-space: pre-wrap;
+  max-width: 15vw;
+  overflow-wrap: break-word; 
+  overflow-x:hidden;
 }
+
 
 /* 自己的消息泡泡样式 */
 .my-message .message-bubble {
@@ -216,13 +218,12 @@ const sendMsg = async () => {
   display: flex;
   align-items: flex-end;
   gap: 6px;
-  max-width: 60%;
 }
 
 /* 自己消息的用户名显示在右侧 */
-.my-message .message-wrapper {
+.my-message .message-wrapper{
   flex-direction: row-reverse;
-}
+} 
 
 /* 用户名样式 */
 .username {

@@ -70,7 +70,7 @@ onMounted(async () => {
 }
 
 .item-container {
-  width: 80%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;

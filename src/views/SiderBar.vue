@@ -26,6 +26,7 @@ const select = (page) => {
 
 <style scoped>
 .sidebar {
+  margin-top: 10px;
   width: 15vw;
   /* background-color: rgb(231, 238, 241); */
   padding: 10px;

@@ -56,7 +56,7 @@ onMounted(async () => {
 
 .userid {
   font-size: 12px;
-  color: #888;
+  color: white;
   margin: 4px 0 0 0;
 }
 </style>

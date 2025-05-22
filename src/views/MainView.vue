@@ -5,7 +5,7 @@
     <!-- 主体内容容器：自动占满剩余空间 -->
     <div class="main-content">
 
-      <ChatView class="friend-list" v-if="currentPage === 'friend-list'" />
+      <ChatView  v-if="currentPage === 'friend-list'" />
       <RoomView  v-else-if="currentPage === 'chat-room'" />
 
     </div>
@@ -30,12 +30,9 @@ const handlePageChange = (page) => {
 <style scoped>
 .main-container {
   display: flex;
-  height: 100vh;
-}
-
-.friend-list {
-  display: flex;
-  height: 100%;
+  height: 95vh;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.3); 
 }
 
 .main-content {

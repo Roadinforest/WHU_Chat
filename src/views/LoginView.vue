@@ -37,7 +37,8 @@ const handleSuccess = () => {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #f2f2f2;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.3); 
 }
 
 .auth-card {

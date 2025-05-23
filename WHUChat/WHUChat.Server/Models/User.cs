@@ -16,6 +16,5 @@ namespace WHUChat.Server.Models
         public ICollection<FriendRequest> ReceivedFriendRequests { get; set; }
         public ICollection<FriendRelation> FriendRelations { get; set; }
         public ICollection<RoomMember> RoomMembers { get; set; }
-        //public ICollection<Message> Messages { get; set; }
     }
 }

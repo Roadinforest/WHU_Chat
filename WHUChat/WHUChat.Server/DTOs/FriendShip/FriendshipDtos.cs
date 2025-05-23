@@ -1,11 +1,10 @@
-using WHUChat.Server.Models; // Assuming FriendRequestStatus is here
+using WHUChat.Server.Models;
 
 namespace WHUChat.Server.DTOs.FriendShip
 {
     // 发送好友请求 DTO 
     public class SendFriendRequestDto
     {
-        // public long SenderId { get; set; } // SenderId 通常从 Token 获取，不需要 DTO 包含
         public long ReceiverId { get; set; }
     }
 
@@ -13,7 +12,6 @@ namespace WHUChat.Server.DTOs.FriendShip
     public class RespondFriendRequestDto
     {
         public long SenderId { get; set; } // 指明是哪个用户发送的请求需要响应
-        // public long ReceiverId { get; set; } // ReceiverId 通常是当前用户，从 Token 获取
         public bool Accept { get; set; } // true = 接受, false = 拒绝
     }
 

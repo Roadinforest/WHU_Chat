@@ -104,3 +104,4 @@ secrets.json
 
 # 忽略 whuchat.client 目录
 whuchat.client/
+/WHUChat/WHUChat.Server/appsettings.json

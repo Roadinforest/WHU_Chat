@@ -8,6 +8,7 @@ using WHUChat.Server.Data;
 using WHUChat.Server.Mappings;
 using WHUChat.Server.Repositories;
 using WHUChat.Server.Services;
+using WHUChat.Server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,9 @@ builder.Services.AddControllers();
 builder.Services.AddSignalR();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.Configure<OssConfig>(builder.Configuration.GetSection("OssConfig"));
+builder.Services.AddScoped<IOssService, OssService>();
+
 
 // ÅäÖÃ Swagger + JWT Ö§³Ö
 builder.Services.AddSwaggerGen(options =>

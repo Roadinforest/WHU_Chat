@@ -1,4 +1,5 @@
-﻿using WHUChat.Server.DTOs.FriendShip;
+﻿using System.Diagnostics.Eventing.Reader;
+using WHUChat.Server.DTOs.FriendShip;
 
 namespace WHUChat.Server.Services
 {
@@ -9,6 +10,8 @@ namespace WHUChat.Server.Services
         Task<List<FriendRequestDto>> GetReceivedRequestsAsync(long userId);
         Task<List<FriendRequestDto>> GetSentRequestsAsync(long userId);
         Task<List<FriendDto>> GetFriendListAsync(long userId);
+
+        Task InsertPrivateRoom(long roomId,long userId1, long userId2); 
         Task DeleteFriendAsync(long userId, long friendId);
     }
 }

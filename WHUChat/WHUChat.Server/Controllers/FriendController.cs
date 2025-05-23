@@ -83,6 +83,8 @@ namespace WHUChat.Server.Controllers
                     {
                         var room = await _roomService.CreateRoomAsync(dto.SenderId, new CreateRoomRequestDto { Name = $"Privateroom_{dto.SenderId.ToString()}_with_{receiverId.ToString()}" });
                         await _roomService.JoinRoomAsync(receiverId, room.Id);
+                        await _friendService.InsertPrivateRoom(room.Id, dto.SenderId, receiverId);
+                        // 在这里添加roomid到friendrelation行中
                     }
                     catch (Exception ex)
                     {

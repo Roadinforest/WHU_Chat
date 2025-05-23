@@ -27,18 +27,23 @@
 
       <div v-else>
         <div class="message-item other-message">
-            <span class="username">系统</span>
-            <div class="message-bubble">你们暂时还没有开始聊天哦</div>
-          </div>
+          <span class="username">系统</span>
+          <div class="message-bubble">你们暂时还没有开始聊天哦</div>
+        </div>
       </div>
 
     </div>
 
 
     <div class="message-sender">
-      <el-input type="textarea" v-model="inputMessage" placeholder="输入消息..." @keyup.enter="sendMsg" style="margin-left:5%" />
+      <el-input type="textarea" v-model="inputMessage" placeholder="输入消息..." @keyup.enter="sendMsg"
+        style="margin-left:5%" />
       <div style="width:5%"></div>
-      <el-button style="margin-right:5%" @click="sendMsg" type="primary">发送</el-button>
+
+      <div class="button-box">
+        <FileUploadButton :roomId="props.roomId"/>
+        <el-button style="margin-right:5%" @click="sendMsg" type="primary">发送</el-button>
+      </div>
     </div>
 
 
@@ -46,11 +51,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, watch ,nextTick} from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import signalRService from '@/services/SignalRService'
 import RoomService from '@/services/RoomService'
 import RoomMemberListButton from './RoomMemberListButton.vue'
 import UserService from '@/services/UserService'
+import FileUploadButton from '../utils/fileUploadButton.vue'
 
 const messageBox = ref(null)
 
@@ -148,13 +154,14 @@ const sendMsg = async () => {
   flex: 1;
   overflow-y: auto;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.3); /* You can adjust the color as needed */
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .message-sender {
   display: flex;
   align-items: space-between;
   margin-bottom: 2%;
+  width: 95%;
 }
 
 .chat-window {
@@ -167,7 +174,7 @@ const sendMsg = async () => {
 
   border: 2px solid #ddd;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.3); /* You can adjust the color as needed */
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 
@@ -195,8 +202,8 @@ const sendMsg = async () => {
   word-break: break-word;
   white-space: pre-wrap;
   max-width: 15vw;
-  overflow-wrap: break-word; 
-  overflow-x:hidden;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
 }
 
 
@@ -210,7 +217,7 @@ const sendMsg = async () => {
 /* 别人的消息泡泡样式 */
 .other-message .message-bubble {
   background-color: #ffffff;
-  color: #000;
+  color: #2c1111;
   border-bottom-left-radius: 4px;
 }
 
@@ -221,9 +228,9 @@ const sendMsg = async () => {
 }
 
 /* 自己消息的用户名显示在右侧 */
-.my-message .message-wrapper{
+.my-message .message-wrapper {
   flex-direction: row-reverse;
-} 
+}
 
 /* 用户名样式 */
 .username {
@@ -231,5 +238,13 @@ const sendMsg = async () => {
   color: #888;
   margin: 0 4px;
   white-space: nowrap;
+}
+
+
+.button-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 </style>

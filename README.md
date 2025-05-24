@@ -38,17 +38,16 @@
 
 ## 🚀 启动方式
 
-### 后端
+### 后端(main分支)
 
 ```bash
-cd server/
+cd WHUChat/WHUCHat.Server/
 dotnet restore
 dotnet run
 ```
 
-### 前端
+### 前端(front分支)
 ```bash
-cd client/
 npm install
 npm run dev
 ```

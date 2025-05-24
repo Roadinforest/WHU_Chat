@@ -11,7 +11,7 @@
                 accepted-file-types="file/*" :server="serverOptions" :instant-upload="true"
                 @processfile="handleUploadSuccess" />
             <div v-if="fileLink != null" class="result-container">
-                <el-button @click="sendFile(fileLink)" class="button">
+                <el-button @click="sendFile(fileLink,fileName,fileSize)" class="button">
                     {{ "发送" }}
                 </el-button>
                 <el-button @click="deleteFile(fileLink)" class="button">
@@ -29,7 +29,7 @@
 import { ref ,defineProps} from "vue";
 import vueFilePond from "vue-filepond";
 import "filepond/dist/filepond.min.css";
-import { ElMessage, ElNotification } from "element-plus";
+import { ElMessage } from "element-plus";
 import baseURL from "@/utils/api/baseURL";
 import signalRService from "@/services/SignalRService";
 
@@ -38,8 +38,11 @@ import signalRService from "@/services/SignalRService";
 // 创建 FilePond 组件
 const FilePond = vueFilePond();
 const token = localStorage.getItem('userToken')
+
 const fileLink = ref("");
-const fileUrls = ref([]);
+const fileName = ref("");
+const fileSize = ref("");
+
 const dialog = ref(false);
 
 const props = defineProps(["roomId"]);
@@ -70,8 +73,8 @@ const serverOptions = {
     }
 };
 
-const sendFile = async (fileLink) => {
-    await signalRService.sendMessage(props.roomId, fileLink)
+const sendFile = async (fileLink, fileName ,fileSize) => {
+    await signalRService.sendMessage(props.roomId, `${fileName}-(${fileSize})`, fileLink)
     dialog.value = false
 }
 
@@ -88,18 +91,38 @@ const handleUploadSuccess = (error, file) => {
         // ElNotification.success({
         //     message: `文件上传成功,文件URL为:${file.serverId}`,
         // });
+
+        // 得到原始文件名
+        const originalFileName = file.filename; // 原始文件名
+        console.log("原始文件名:", originalFileName);
+        fileName.value = originalFileName
+
+        // 得到最终返回文件链接
         console.log("Url", file.serverId)
         fileLink.value = file.serverId
-        fileUrls.value.push(file.serverId)
 
+        //  得到文件大小
+        const fileSizeBytes = file.fileSize; // FilePond 自动提供的大小（字节数）
+        const sizeFormatted = formatFileSize(fileSizeBytes);
+        fileSize.value = sizeFormatted
+
+        console.log('文件大小:', sizeFormatted); // 示例：1.3 MB
+
+        // 七秒之后删除小弹窗
         setTimeout(() => {
             pondRef.value?.removeFile(file.id)
-        }, 7000)    // 七秒之后删除小弹窗
+        }, 7000)
     }
     else {
-        ElMessage.error("上传失败",error);
+        ElMessage.error("上传失败", error);
     }
 };
+
+function formatFileSize(bytes) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+}
 
 </script>
 

@@ -18,8 +18,15 @@
 
           <div class="message-wrapper">
             <span class="username">{{ msg.userName }}</span>
-            <div class="message-bubble">{{ msg.content }}</div>
+
+            <!-- 消息显示 -->
+            <div v-if="msg.resUrl==='null'" class="message-bubble">{{ msg.content }}</div>
+
+            <!-- 显示文件资料 -->
+            <FileCard v-else :url="msg.resUrl" :fileContent="msg.content"/>
           </div>
+
+
 
         </div>
 
@@ -41,7 +48,7 @@
       <div style="width:5%"></div>
 
       <div class="button-box">
-        <FileUploadButton :roomId="props.roomId"/>
+        <FileUploadButton :roomId="props.roomId" />
         <el-button style="margin-right:5%" @click="sendMsg" type="primary">发送</el-button>
       </div>
     </div>
@@ -56,7 +63,8 @@ import signalRService from '@/services/SignalRService'
 import RoomService from '@/services/RoomService'
 import RoomMemberListButton from './RoomMemberListButton.vue'
 import UserService from '@/services/UserService'
-import FileUploadButton from '../utils/fileUploadButton.vue'
+import FileUploadButton from '../utils/FileUploadButton.vue'
+import FileCard from '../utils/FileCard.vue'
 
 const messageBox = ref(null)
 

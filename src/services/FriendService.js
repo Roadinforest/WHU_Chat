@@ -1,6 +1,5 @@
 // src/services/FriendService.js
 import api from '@/utils/api/api.js';
-import { ElMessage } from 'element-plus';
 
 const FriendService = {
   async getFriendList() {

@@ -65,5 +65,12 @@ namespace WHUChat.Server.Controllers
                 return StatusCode(500, Result<List<SendMessageRequestDto>>.Fail("目标用户消息不存在"));
             }
         }
+
+        //删除特定id信息
+        [HttpDelete("delete_message/{id}")]
+
+        public async Task DeleteMessage(long id) {
+            await _chatService.DeleteMessage(id);
+        }
     }
 }

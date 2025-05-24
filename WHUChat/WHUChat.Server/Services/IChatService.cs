@@ -9,6 +9,8 @@ namespace WHUChat.Server.Services
 
         public Task<List<SendMessageRequestDto>> GetSpecificMessage(long roomId, string username);
 
-        public Task InsertMessage(Message messasge);
+        public Task<long> InsertMessage(Message messasge);
+
+        public Task DeleteMessage(long id);
     }
 }

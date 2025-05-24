@@ -9,7 +9,9 @@ namespace WHUChat.Server.Repositories
         public Task<List<Message>> GetHistory(long roomId);
 
         public Task<List<Message>> GetSpecificMessage(long roomId, string username);
-        public Task InsertMessage(Message message);
+        public Task<long> InsertMessage(Message message);
+
+        public Task DeleteMessage(long id);
 
         //public Task SaveChangesAsync();
         

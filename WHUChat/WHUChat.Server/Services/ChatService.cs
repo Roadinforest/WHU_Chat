@@ -22,6 +22,7 @@ namespace WHUChat.Server.Services
             foreach (Message m in messages) {
                 messagesList.Add(new SendMessageRequestDto
                 {
+                    Id = m.Id,
                     UserName = m.Username,
                     Content = m.Content,
                     ResUrl = m.Resurl,
@@ -38,6 +39,7 @@ namespace WHUChat.Server.Services
             foreach (Message m in messages) {
                 messageList.Add(new SendMessageRequestDto
                 {
+                    Id = m.Id,
                     UserName = m.Username,
                     Content = m.Content,
                     ResUrl = m.Resurl,
@@ -46,9 +48,13 @@ namespace WHUChat.Server.Services
             }
             return messageList;
         }
-        public async Task InsertMessage(Message m) { 
-            await _messageRepository.InsertMessage(m);
+        public async Task<long> InsertMessage(Message m) { 
+            return await _messageRepository.InsertMessage(m);
             
+        }
+
+        public async Task DeleteMessage(long id) {
+            await _messageRepository.DeleteMessage(id);
         }
     }
 }

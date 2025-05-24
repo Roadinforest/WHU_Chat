@@ -19,11 +19,18 @@ namespace WHUChat.Server.Repositories
                 .ToListAsync();
         
         }
-        public  async Task InsertMessage(Message message) {
+        public  async Task<long> InsertMessage(Message message) {
             await _context.Messages.AddAsync(message);
             await _context.SaveChangesAsync();
+            return message.Id;
         }
 
+        public async Task DeleteMessage(long id) {
+            var desti = _context.Messages.Find(id);
+            _context.Messages.Remove(desti);
+            await _context.SaveChangesAsync();
+
+        }
         //public async Task SaveChangesAsync()
         //{
         //    await _context.SaveChangesAsync();

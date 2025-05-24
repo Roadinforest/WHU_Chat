@@ -40,8 +40,8 @@ namespace WHUChat.Server.Hubs
                 CreatedAt = DateTime.Now,
                 Resurl = resUrl,
             };
-            await _chatService.InsertMessage(m);
-            await Clients.Group(roomId).SendAsync("ReceiveMessage", u.Username, message,resUrl);//根据roomId显示到对应房间界面
+            long id=await _chatService.InsertMessage(m);
+            await Clients.Group(roomId).SendAsync("ReceiveMessage",id, u.Username, message,resUrl);//根据roomId显示到对应房间界面
             //将消息加入数据库用与历史浏览
 
         }

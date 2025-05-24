@@ -9,7 +9,7 @@
         <div class="upload-container">
             <file-pond ref="pondRef"  name="file" label-idle="拖拽文件到这里或点击上传(文件小于1MB)" allow-multiple="false"
                 accepted-file-types="file/*" :server="serverOptions" :instant-upload="true"
-                @processfile="handleUploadSuccess" />
+                @processfile="handleUploadSuccess" @removefile="deleteFile(fileLink)"  />
             <div v-if="fileLink != null" class="result-container">
                 <el-button @click="sendFile(fileLink,fileName,fileSize)" class="button">
                     {{ "发送" }}
@@ -32,6 +32,7 @@ import "filepond/dist/filepond.min.css";
 import { ElMessage } from "element-plus";
 import baseURL from "@/utils/api/baseURL";
 import signalRService from "@/services/SignalRService";
+import FileService from "@/services/FileService";
 
 
 
@@ -59,7 +60,6 @@ const serverOptions = {
         headers: {
             Authorization: `Bearer ${token}`, // 如果需要认证
         },
-        // onload: (response) => JSON.parse(response).data, // 解析返回的 URL
         onload: (response) => {
             console.log("response", response)
             // 返回的 URL 会赋值给 file.serverId
@@ -70,18 +70,61 @@ const serverOptions = {
             console.error("上传失败返回值：", response)
             return "上传失败"
         }
+    },
+    // revert: {
+    //     url: `${baseURL}/api/fileupload/delete`,
+    //     method: "POST",
+    //     timeout: 7000,
+    //     withCredentials: true,
+    //     headers: {
+    //         Authorization: `Bearer ${token}`, // 如果需要认证
+    //     },
+
+    // }
+    revert: (serverId, load, error) => {
+        fetch(`${baseURL}/api/fileupload/delete`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({ url: serverId }) // 后端要求的是JSO(url:"http……")而不是string
+        })
+            .then(res => {
+                if (res.ok) {
+                    load(); // 通知 FilePond 删除成功
+                } else {
+                    return res.text().then(text => { throw new Error(text); });
+                }
+            })
+            .catch(err => {
+                console.error("删除失败", err);
+                error("删除失败");
+            });
     }
+
 };
 
-const sendFile = async (fileLink, fileName ,fileSize) => {
-    await signalRService.sendMessage(props.roomId, `${fileName}-(${fileSize})`, fileLink)
+const sendFile = async (fileLink, fileName, fileSize) => {
+    try {
+        await signalRService.sendMessage(props.roomId, `${fileName}-(${fileSize})`, fileLink)
+
+    }
+    catch (error) {
+        ElMessage.error("上传失败", error);
+    }
     dialog.value = false
 }
 
 const deleteFile = async (fileLink) => {
-    const response = await fetch(`${baseURL}/api/fileupload/delete?fileLink=${fileLink}`, {
-        method: "DELETE",
-    })
+    try {
+        await FileService.deleteFile(fileLink)
+
+    }
+    catch (error) {
+        ElMessage.error("删除失败", error);
+    }
+    dialog.value = false
 }
 
 // 处理上传成功事件
@@ -119,9 +162,9 @@ const handleUploadSuccess = (error, file) => {
 };
 
 function formatFileSize(bytes) {
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-  return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+    return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 }
 
 </script>

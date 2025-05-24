@@ -23,7 +23,7 @@
             <div v-if="msg.resUrl==='null'" class="message-bubble">{{ msg.content }}</div>
 
             <!-- 显示文件资料 -->
-            <FileCard v-else :url="msg.resUrl" :fileContent="msg.content" :message-id="msg.id"/>
+            <FileCard v-else :url="msg.resUrl" :fileContent="msg.content" :messageId="msg.id"/>
           </div>
 
 
@@ -81,14 +81,23 @@ const props = defineProps(["roomId", "roomName"])
 const messages = ref([])
 const inputMessage = ref("")
 
-const receiveHandler = (username, content, resUrl) => {
+const receiveHandler = (id, username, content, resUrl) => {
   messages.value.push({
+    id:  id,
     userName: username, // 映射字段名
     content,
     resUrl
   });
   scrollToBottom()
 };
+
+const deleteHandler = (id) => {
+  console.log("delete: ", id)
+  const index = messages.value.findIndex(msg => msg.id === id);
+  if (index !== -1) {
+    messages.value.splice(index, 1);
+  }
+}
 
 const userName = ref("");
 const userId = ref("");
@@ -105,6 +114,7 @@ onMounted(async () => {
 
   await signalRService.startConnection()
   signalRService.connection.on('ReceiveMessage', receiveHandler)
+  signalRService.connection.on('DeleteMessage', deleteHandler)
   await signalRService.entryRoom(props.roomId)
   const res = await RoomService.getHistory(props.roomId)
   messages.value = res.data
@@ -140,6 +150,8 @@ onBeforeUnmount(async () => {
 const sendMsg = async () => {
   if (inputMessage.value.trim()) {
     await signalRService.sendMessage(props.roomId, inputMessage.value)
+    // const res = await RoomService.getHistory(props.roomId)
+    // messages.value = res.data
     inputMessage.value = ''
   }
   scrollToBottom()

@@ -1,7 +1,7 @@
 <!-- src/views/LoginRegisterView.vue -->
 <template>
   <div class="auth-page">
-    <el-card class="auth-card">
+    <el-card class="auth-card" style="background-color: rgba(255, 255, 255, 0.9);">
       <div class="auth-tabs">
 
         <el-tabs v-model="activeTab" stretch>

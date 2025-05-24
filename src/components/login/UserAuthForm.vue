@@ -7,25 +7,26 @@
       <el-input type="password" v-model="form.password" />
     </el-form-item>
 
-    <el-form-item>
-      <el-button type="primary" @click="onSubmit">
-        {{ props.mode=== 'login' ? '登录' : '注册' }}
+    <div style="display: flex;justify-content: center;margin: 0 !important;">
+      <el-button @click="onSubmit" style="width: 50%;">
+        {{ props.mode === 'login' ? '登录' : '注册' }}
       </el-button>
-    </el-form-item>
+    </div>
+    <!-- </el-form-item> -->
 
   </el-form>
 </template>
 
 <script setup lang="ts">
-import { ref ,defineEmits} from 'vue'
+import { ref, defineEmits } from 'vue'
 import { ElMessage } from 'element-plus'
-import  AuthService  from '@/services/AuthService'
+import AuthService from '@/services/AuthService'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const formRef = ref()
 const form = ref({ username: '', password: '' })
-const props  = defineProps(["mode"])
+const props = defineProps(["mode"])
 const emit = defineEmits(['success'])
 
 const rules = {
@@ -34,7 +35,7 @@ const rules = {
 }
 
 const onSubmit = async () => {
-  const mode = props.mode; 
+  const mode = props.mode;
   await formRef.value.validate()
 
   try {

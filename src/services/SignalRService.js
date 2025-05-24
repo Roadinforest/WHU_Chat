@@ -4,17 +4,17 @@ import baseURL from '@/utils/api/baseURL'
 
 class SignalRService {
   constructor() {
-    this.connection = null
-    this.isConnected = false
+    this.connection = null;
+    this.isConnected = false;
   }
 
   async startConnection() {
-    if (this.isConnected) return
+    if (this.isConnected) return;
 
-    const token = localStorage.getItem('userToken')
+    const token = localStorage.getItem("userToken");
     if (!token) {
-      console.warn('Token missing: cannot connect to SignalR.')
-      return
+      console.warn("Token missing: cannot connect to SignalR.");
+      return;
     }
 
     this.connection = new signalR.HubConnectionBuilder()
@@ -24,16 +24,16 @@ class SignalRService {
         transport: signalR.HttpTransportType.WebSockets,
       })
       .withAutomaticReconnect()
-      .build()
+      .build();
 
-    this.registerListeners()
+    this.registerListeners();
 
     try {
-      await this.connection.start()
-      this.isConnected = true
-      console.log(' SignalR connected.')
+      await this.connection.start();
+      this.isConnected = true;
+      console.log(" SignalR connected.");
     } catch (err) {
-      console.error(' SignalR connect failed:', err)
+      console.error(" SignalR connect failed:", err);
     }
   }
 
@@ -41,24 +41,27 @@ class SignalRService {
    * 注册后端消息事件
    */
   registerListeners() {
-    this.connection.on('ReceiveMessage', (username, message, resUrl) => {
+    this.connection.on("ReceiveMessage", (username, message, resUrl) => {
       // console.log(` [${username}] ${message}`)
       // 可触发事件或调用回调更新UI
-    })
+    });
+    this.connection.on("DeleteMessage", (id) => {});
   }
+  // 一般在调用SignalRService实例化之后，再单独设置处理函数
+  // 但是不可以删除，否则会报错
 
   /**
    * 加入房间（聊天室）
    */
   async entryRoom(roomId) {
-    if (!this.connection) return
+    if (!this.connection) return;
     try {
-      await this.connection.invoke('EntryRoom', String(roomId))
+      await this.connection.invoke("EntryRoom", String(roomId));
       // console.log(`Entered room ${roomId}`)
     } catch (err) {
-      console.error(' Failed to enter room:', err)
-      this.startConnection()
-      this.entryRoom(roomId)
+      console.error(" Failed to enter room:", err);
+      this.startConnection();
+      this.entryRoom(roomId);
     }
   }
 
@@ -66,12 +69,12 @@ class SignalRService {
    * 退出房间
    */
   async quitRoom(roomId) {
-    if (!this.connection) return
+    if (!this.connection) return;
     try {
-      await this.connection.invoke('QuitFromRoom',String(roomId))
+      await this.connection.invoke("QuitFromRoom", String(roomId));
       // console.log(`Left room ${roomId}`)
     } catch (err) {
-      console.error('Failed to leave room:', err)
+      console.error("Failed to leave room:", err);
     }
   }
 
@@ -79,34 +82,33 @@ class SignalRService {
    * 发送消息
    */
   async sendMessage(roomId, message, resUrl = null) {
-    if (!this.connection) return
+    if (!this.connection) return;
     try {
-      await this.connection.invoke('SendMessage', String(roomId), String(message)
-      , String(resUrl))
+      await this.connection.invoke("SendMessage", String(roomId), String(message), String(resUrl));
     } catch (err) {
-      console.error('SendMessage failed:', err)
-      this.startConnection()
-      this.entryRoom(roomId)
+      console.error("SendMessage failed:", err);
+      this.startConnection();
+      this.entryRoom(roomId);
     }
   }
 
   async deleteMessage(id) {
-    if (!this.connection) return
+    if (!this.connection) return;
     try {
-      await this.connection.invoke('DeleteMessage', Number(id))
+      await this.connection.invoke("DeleteMessage", Number(id));
     } catch (err) {
-      console.error('deleteMessage failed:', err)
-      this.startConnection()
+      console.error("deleteMessage failed:", err);
+      this.startConnection();
     }
   }
   async stopConnection() {
     if (this.connection) {
-      await this.connection.stop()
-      this.isConnected = false
-      // console.log('SignalR disconnected.')
+      await this.connection.stop();
+      this.isConnected = false;
+      console.log('SignalR disconnected.')
     }
   }
 }
 
-const signalRService = new SignalRService()
-export default signalRService
+const signalRService = new SignalRService();
+export default signalRService;

@@ -8,7 +8,7 @@
     <Message @click="showRequestDialog= true"/> 
   </el-icon>
   
-  <el-dialog title="添加好友" v-model="showRequestDialog">
+  <el-dialog title="好友申请" v-model="showRequestDialog">
   <div class="search-tab">
 
   <div class="request-list">

@@ -18,12 +18,6 @@ public class OssService : IOssService
         _client = new OssClient(_ossConfig.Endpoint, _ossConfig.AccessKeyId, _ossConfig.AccessKeySecret);
     }
 
-    /// <summary>
-    /// Uploads a file to Alibaba Cloud OSS.
-    /// </summary>
-    /// <param name="file">The file to upload.</param>
-    /// <param name="directoryPath">Optional directory path within the bucket (e.g., "images/avatars").</param>
-    /// <returns>The public URL of the uploaded file.</returns>
     public async Task<string> UploadFileAsync(IFormFile file, string directoryPath = "")
     {
         if (file == null || file.Length == 0)
@@ -38,23 +32,9 @@ public class OssService : IOssService
         {
             using (var stream = file.OpenReadStream())
             {
-                // Basic upload
                 _client.PutObject(_ossConfig.BucketName, objectKey, stream);
-
-                // To upload asynchronously (more suitable for web apps)
-                // var putObjectRequest = new PutObjectRequest(_ossConfig.BucketName, objectKey, stream);
-                // var result = await Task.Factory.FromAsync(
-                //    (callback, state) => _client.BeginPutObject(putObjectRequest, callback, state),
-                //    ar => _client.EndPutObject(ar),
-                //    null);
-
             }
 
-            // Construct the public URL (ensure your bucket has public read access or use signed URLs for private objects)
-            // The exact URL format might depend on your OSS endpoint and bucket settings.
-            // For public buckets, it's usually: https://<BucketName>.<Endpoint>/<ObjectKey>
-            // Ensure your Endpoint in appsettings.json does NOT include "https://" for the OssClient initialization,
-            // but you might need it here for the public URL.
             string publicUrl;
             if (_ossConfig.Endpoint.StartsWith("https://") || _ossConfig.Endpoint.StartsWith("http://"))
             {
@@ -70,15 +50,47 @@ public class OssService : IOssService
         }
         catch (OssException ex)
         {
-            // Log OSS specific errors
             Console.WriteLine($"OSS Error Code: {ex.ErrorCode}, Message: {ex.Message}");
-            throw; // Re-throw or handle as appropriate
+            throw; 
         }
         catch (Exception ex)
         {
-            // Log general errors
             Console.WriteLine($"Error uploading file: {ex.Message}");
-            throw; // Re-throw or handle as appropriate
+            throw; 
         }
     }
+
+    public async Task DeleteFileAsync(string fileUrl)
+    {
+        if (string.IsNullOrWhiteSpace(fileUrl))
+        {
+            throw new ArgumentException("File URL cannot be null or empty.", nameof(fileUrl));
+        }
+
+        // 获取 objectKey，即 OSS 中存储的路径部分
+        var prefix = $"https://{_ossConfig.BucketName}.{_ossConfig.Endpoint}/";
+        if (!fileUrl.StartsWith(prefix))
+        {
+            throw new InvalidOperationException("Invalid file URL or not matching the configured OSS bucket.");
+        }
+
+        var objectKey = fileUrl.Substring(prefix.Length);
+
+        try
+        {
+            _client.DeleteObject(_ossConfig.BucketName, objectKey);
+        }
+        catch (OssException ex)
+        {
+            Console.WriteLine($"OSS Error Code: {ex.ErrorCode}, Message: {ex.Message}");
+            throw;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error deleting file: {ex.Message}");
+            throw;
+        }
+    }
+
+
 }

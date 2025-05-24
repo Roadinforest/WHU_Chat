@@ -18,6 +18,7 @@ public class FileUploadController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
     public async Task<IActionResult> UploadFile(IFormFile file, [FromForm] string directoryPath = "uploads")
     {
         if (file == null || file.Length == 0)
@@ -39,4 +40,36 @@ public class FileUploadController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
         }
     }
+
+    [HttpPost("delete")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> DeleteFile([FromBody] DeleteRequest request)
+    {
+        try
+        {
+            await _ossService.DeleteFileAsync(request.Url);
+            return Ok(new { success = true });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { success = false, error = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { success = false, error = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, new { success = false, error = ex.Message });
+        }
+    }
+
+    public class DeleteRequest
+    {
+        public string Url { get; set; }
+    }
+
+
 }

@@ -1,12 +1,10 @@
 <template>
+  <el-icon size="20" style="color:red" @click="handleDelete">
+    <Delete />
+  </el-icon>
   <!-- 图片类型 -->
   <template v-if="isImage(props.url)">
-    <img
-      :src="props.url"
-      alt="image"
-      class="chat-image"
-      @click="showImagePreview = true"
-    />
+    <img :src="props.url" alt="image" class="chat-image" @click="showImagePreview = true" />
     <div v-if="showImagePreview" class="image-preview-overlay" @click="showImagePreview = false">
       <img :src="props.url" class="image-preview" />
     </div>
@@ -28,11 +26,12 @@
     <a :href="props.url" target="_blank">{{ props.url }}</a>
   </template>
 </template>
-
 <script setup>
 import { defineProps, ref, computed } from 'vue';
+import { Delete } from '@element-plus/icons-vue'
+import signalRService from '@/services/SignalRService';
 
-const props = defineProps(['url', 'fileContent']);
+const props = defineProps(['url', 'fileContent','messageId']);
 const showImagePreview = ref(false);
 
 const parsed = computed(() => parseFileContent(props.fileContent));
@@ -65,6 +64,10 @@ function handlePreview() {
   const previewUrl = `https://view.officeapps.live.com/op/view.aspx?src=${encodedUrl}`;
   window.open(previewUrl, '_blank');
 }
+
+const handleDelete =  async () => {
+  await signalRService.deleteMessage(props.messageId)
+};
 </script>
 
 <style scoped>

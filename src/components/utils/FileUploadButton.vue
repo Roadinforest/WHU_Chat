@@ -9,7 +9,7 @@
         <div class="upload-container">
             <file-pond ref="pondRef"  name="file" label-idle="拖拽文件到这里或点击上传(文件小于1MB)" allow-multiple="false"
                 accepted-file-types="file/*" :server="serverOptions" :instant-upload="true"
-                @processfile="handleUploadSuccess" @removefile="deleteFile(fileLink)"  />
+                @processfile="handleUploadSuccess" />
             <div v-if="fileLink != null" class="result-container">
                 <el-button @click="sendFile(fileLink,fileName,fileSize)" class="button">
                     {{ "发送" }}
@@ -18,7 +18,6 @@
                     {{ "撤销" }}
                 </el-button>
             </div>
-            <!-- <input class="link-result" v-model="fileLink" type="text" disabled /> -->
         </div>
 
     </el-dialog>
@@ -40,6 +39,7 @@ import FileService from "@/services/FileService";
 const FilePond = vueFilePond();
 const token = localStorage.getItem('userToken')
 
+// 文件相关配置
 const fileLink = ref("");
 const fileName = ref("");
 const fileSize = ref("");

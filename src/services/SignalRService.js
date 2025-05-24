@@ -90,6 +90,15 @@ class SignalRService {
     }
   }
 
+  async deleteMessage(id) {
+    if (!this.connection) return
+    try {
+      await this.connection.invoke('DeleteMessage', Number(id))
+    } catch (err) {
+      console.error('deleteMessage failed:', err)
+      this.startConnection()
+    }
+  }
   async stopConnection() {
     if (this.connection) {
       await this.connection.stop()

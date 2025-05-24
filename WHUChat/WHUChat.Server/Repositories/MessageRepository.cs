@@ -25,12 +25,14 @@ namespace WHUChat.Server.Repositories
             return message.Id;
         }
 
-        public async Task DeleteMessage(long id) {
+        public async Task<long> DeleteMessage(long id) {
             var desti = _context.Messages.Find(id);
             _context.Messages.Remove(desti);
             await _context.SaveChangesAsync();
+            return desti.RoomId;
 
         }
+
         //public async Task SaveChangesAsync()
         //{
         //    await _context.SaveChangesAsync();

@@ -53,8 +53,9 @@ namespace WHUChat.Server.Services
             
         }
 
-        public async Task DeleteMessage(long id) {
-            await _messageRepository.DeleteMessage(id);
+        public async Task<long> DeleteMessage(long id) {
+            return await _messageRepository.DeleteMessage(id);
         }
+
     }
 }

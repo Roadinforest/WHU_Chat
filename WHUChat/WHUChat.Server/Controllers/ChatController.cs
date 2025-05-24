@@ -66,11 +66,5 @@ namespace WHUChat.Server.Controllers
             }
         }
 
-        //删除特定id信息
-        [HttpDelete("delete_message/{id}")]
-
-        public async Task DeleteMessage(long id) {
-            await _chatService.DeleteMessage(id);
-        }
     }
 }

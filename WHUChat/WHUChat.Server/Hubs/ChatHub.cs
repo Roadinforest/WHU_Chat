@@ -60,5 +60,12 @@ namespace WHUChat.Server.Hubs
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, roomId);
         }
+
+        public async Task DeleteMessage(long id)
+        {
+            long roomId = await _chatService.DeleteMessage(id);
+
+            await Clients.Group(roomId.ToString()).SendAsync("DeleteMessage", id);
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace WHUChat.Server.Services
 
         public Task<long> InsertMessage(Message messasge);
 
-        public Task DeleteMessage(long id);
+        public Task<long> DeleteMessage(long id);
+
     }
 }

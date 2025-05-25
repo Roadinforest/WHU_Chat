@@ -40,7 +40,11 @@ const select = (page) => {
   display: block;
   width: 90%;
   margin: 0px 20px 10px 10px;
-  background-color:grey;
+  background-color:rgba(255, 218, 53,0.4);
   border-color: grey;
+}
+
+.button:hover {
+  background-color: rgba(255, 218, 53,0.8);
 }
 </style>

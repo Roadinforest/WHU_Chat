@@ -23,7 +23,7 @@
             <div v-if="msg.resUrl==='null'" class="message-bubble">{{ msg.content }}</div>
 
             <!-- 显示文件资料 -->
-            <FileCard v-else :url="msg.resUrl" :fileContent="msg.content" :messageId="msg.id"/>
+            <FileCard v-else :url="msg.resUrl" :fileContent="msg.content" :messageId="msg.id" :delete-able="msg.userName===userName"/>
           </div>
 
 

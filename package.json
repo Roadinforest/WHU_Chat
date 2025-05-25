@@ -15,6 +15,7 @@
     "axios": "^1.9.0",
     "element-plus": "^2.9.10",
     "filepond": "^4.32.7",
+    "filepond-plugin-file-validate-size": "^2.2.8",
     "pinia": "^3.0.2",
     "vue": "^3.5.13",
     "vue-filepond": "^7.0.4",

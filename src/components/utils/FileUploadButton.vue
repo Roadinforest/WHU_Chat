@@ -7,9 +7,9 @@
     <el-dialog :before-close="clickCancel" v-model="dialog" title="上传文件" size='80%' :with-header="false">
 
         <div class="upload-container">
-            <file-pond ref="pondRef"  name="file" label-idle="拖拽文件到这里或点击上传(文件小于1MB)" allow-multiple="false"
+            <file-pond ref="pondRef"  name="file" label-idle="拖拽文件到这里或点击上传(文件小于10MB)" allow-multiple="false"
                 accepted-file-types="file/*" :server="serverOptions" :instant-upload="true"
-                @processfile="handleUploadSuccess" />
+                @processfile="handleUploadSuccess" :max-file-size="'10MB'"  />
             <div v-if="fileLink != null" class="result-container">
                 <el-button @click="sendFile(fileLink,fileName,fileSize)" class="button">
                     {{ "发送" }}
@@ -33,10 +33,14 @@ import baseURL from "@/utils/api/baseURL";
 import signalRService from "@/services/SignalRService";
 import FileService from "@/services/FileService";
 
+// 导入插件
+import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-size";
+
+// 注册插件
+const FilePond = vueFilePond(FilePondPluginFileValidateSize);
 
 
 // 创建 FilePond 组件
-const FilePond = vueFilePond();
 const token = localStorage.getItem('userToken')
 
 // 文件相关配置
@@ -71,16 +75,6 @@ const serverOptions = {
             return "上传失败"
         }
     },
-    // revert: {
-    //     url: `${baseURL}/api/fileupload/delete`,
-    //     method: "POST",
-    //     timeout: 7000,
-    //     withCredentials: true,
-    //     headers: {
-    //         Authorization: `Bearer ${token}`, // 如果需要认证
-    //     },
-
-    // }
     revert: (serverId, load, error) => {
         fetch(`${baseURL}/api/fileupload/delete`, {
             method: "POST",

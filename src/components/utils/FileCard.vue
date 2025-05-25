@@ -1,5 +1,5 @@
 <template>
-  <el-icon size="20" style="color:red" @click="handleDelete">
+  <el-icon v-if="deleteAble" size="20" style="color:red" @click="handleDelete">
     <Delete />
   </el-icon>
   <!-- 图片类型 -->
@@ -31,7 +31,7 @@ import { defineProps, ref, computed } from 'vue';
 import { Delete } from '@element-plus/icons-vue'
 import signalRService from '@/services/SignalRService';
 
-const props = defineProps(['url', 'fileContent','messageId']);
+const props = defineProps(['url', 'fileContent','messageId','deleteAble']);
 const showImagePreview = ref(false);
 
 const parsed = computed(() => parseFileContent(props.fileContent));

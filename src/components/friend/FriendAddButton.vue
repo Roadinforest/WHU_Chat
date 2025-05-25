@@ -15,13 +15,13 @@
       type="number"
       placeholder="输入好友ID"
     />
-    <button @click="searchFriend">搜索</button>
+    <el-button @click="searchFriend">搜索</el-button>
 
     <div v-if="searchResult" class="search-result">
       <div class="friend-card">
         <p>好友ID: {{ searchResult.id }}</p>
         <p>昵称: {{ searchResult.username }}</p>
-        <button @click="sendFriendRequest(searchResult.id)">添加好友</button>
+        <el-button @click="sendFriendRequest(searchResult.id)">添加好友</el-button>
       </div>
     </div>
   </div>

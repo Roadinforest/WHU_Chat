@@ -2,6 +2,7 @@
   <el-icon v-if="deleteAble" size="20" style="color:red" @click="handleDelete">
     <Delete />
   </el-icon>
+
   <!-- 图片类型 -->
   <template v-if="isImage(props.url)">
     <img :src="props.url" alt="image" class="chat-image" @click="showImagePreview = true" />
@@ -9,6 +10,12 @@
       <img :src="props.url" class="image-preview" />
     </div>
   </template>
+
+  <!-- 视频类型 -->
+  <template v-else-if="isVideo(props.url)">
+    <video controls :src="props.url" class="chat-video" />
+  </template>
+
 
   <!-- 文档类型 -->
   <template v-else-if="isDocument(props.url)">
@@ -31,13 +38,17 @@ import { defineProps, ref, computed } from 'vue';
 import { Delete } from '@element-plus/icons-vue'
 import signalRService from '@/services/SignalRService';
 
-const props = defineProps(['url', 'fileContent','messageId','deleteAble']);
+const props = defineProps(['url', 'fileContent', 'messageId', 'deleteAble']);
 const showImagePreview = ref(false);
 
 const parsed = computed(() => parseFileContent(props.fileContent));
 
 function isImage(url) {
   return /\.(png|jpe?g|gif|bmp|webp)$/i.test(url);
+}
+
+function isVideo(url) {
+  return /\.(mp4|webm|ogg)$/i.test(url);
 }
 
 function isDocument(url) {
@@ -65,7 +76,7 @@ function handlePreview() {
   window.open(previewUrl, '_blank');
 }
 
-const handleDelete =  async () => {
+const handleDelete = async () => {
   await signalRService.deleteMessage(props.messageId)
 };
 </script>
@@ -142,4 +153,11 @@ const handleDelete =  async () => {
   margin-left: 12px;
   flex-shrink: 0;
 }
+
+.chat-video {
+  max-width: 300px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 </style>

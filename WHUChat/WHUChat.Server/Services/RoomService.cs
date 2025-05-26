@@ -64,7 +64,7 @@ namespace WHUChat.Server.Services
                 AvatarUrl = persistedRoom.AvatarUrl,
                 CreatedAt = persistedRoom.CreatedAt,
                 Creator = new UserSimpleDto { Id = creator.Id, Username = creator.Username, AvatarUrl = creator.AvatarUrl },
-                MemberCount = 1 // 或者: await _roomRepository.GetRoomMemberCountAsync(persistedRoom.Id)
+                MemberCount = 1 // 或者: await _roomRepository.GetRoomMemberCountAsync(persistedRoom.Id)，这里简化处理
             };
         }
 
@@ -82,7 +82,7 @@ namespace WHUChat.Server.Services
             }
 
             var roomMember = new RoomMember { RoomId = roomId, MemberId = userId };
-            // 如果采纳了数据库建议，这里可以设置 JoinedAt 和默认 Role
+            // 这里设置 JoinedAt 和默认 Role
             roomMember.JoinedAt = DateTime.UtcNow;
             roomMember.Role = RoomMemberRole.MEMBER;
             await _roomRepository.AddMemberAsync(roomMember);

@@ -23,7 +23,7 @@ namespace WHUChat.Server.Services
                 throw new ArgumentException("不能向自己发送好友请求。");
             }
 
-            // 2. 验证: 接收者是否存在 (可选，取决于你的用户查找逻辑在哪里实现)
+            // 2. 验证: 接收者是否存在 
             var receiver = await _friendshipRepository.GetUserByIdAsync(receiverId);
             if (receiver == null)
             {
@@ -107,10 +107,6 @@ namespace WHUChat.Server.Services
                 {
                     // 如果已经是好友，可能只需更新请求状态即可，或者抛出异常
                     throw new SqlAlreadyFilledException("双方已经成为好友。");
-                    //await _friendshipRepository.SaveChangesAsync(); // 仅保存请求状态的更新
-                    //                                                // 可以选择记录日志或抛出特定异常
-                    //Console.WriteLine($"Warning: Users {senderId} and {receiverId} were already friends when accepting request.");
-                    //return; // 或者根据业务逻辑决定是否继续
                 }
 
                 var relation1 = new FriendRelation { UserId = senderId, FriendId = receiverId, CreatedAt = DateTime.UtcNow };
@@ -131,12 +127,12 @@ namespace WHUChat.Server.Services
             // 映射到 DTO
             return requests.Select(req => new FriendRequestDto
             {
-                // RequestId = req.Id, // 如果 FriendRequest 表有自增 ID
+                // RequestId = req.Id, // 自增 ID
                 SenderId = req.SenderId,
                 SenderUsername = req.Sender?.Username ?? "未知用户", // 从 Include 的 Sender 获取
                 SenderAvatarUrl = req.Sender?.AvatarUrl,
                 ReceiverId = req.ReceiverId,
-                // ReceiverUsername = req.Receiver?.Username, // Receiver 就是当前用户，信息通常已知
+                // ReceiverUsername = req.Receiver?.Username, // Receiver 就是当前用户，信息已知
                 // ReceiverAvatarUrl = req.Receiver?.AvatarUrl,
                 Status = req.Status,
                 CreatedAt = req.CreatedAt,
@@ -190,7 +186,7 @@ namespace WHUChat.Server.Services
 
             // 检查是否是好友 (通过查找关系)
             // (或者可以直接尝试删除，然后判断是否有更改)
-            var relationExists = await _friendshipRepository.AreUsersFriendsAsync(userId, friendId); // 使用之前的检查方法
+            var relationExists = await _friendshipRepository.AreUsersFriendsAsync(userId, friendId); 
             if (!relationExists)
             {
                 throw new InvalidOperationException("你们不是好友关系。");

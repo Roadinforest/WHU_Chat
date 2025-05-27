@@ -1,7 +1,7 @@
 // src/utils/api.js
 import axios from 'axios';
 import baseURL from './baseURL';
-axios.defaults.withCredentials = true;  // 只有后端设置了 AllowCredentials 才用
+// axios.defaults.withCredentials = true;  // 只有后端设置了 AllowCredentials 才用
 
 const api = axios.create({
   baseURL: `${baseURL}/api`,

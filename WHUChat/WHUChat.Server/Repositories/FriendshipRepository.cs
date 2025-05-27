@@ -121,7 +121,6 @@ namespace WHUChat.Server.Repositories
                                                                          // return true; // 如果需要返回 bool，可以在这里处理
             }
             // return false; // 如果需要返回 bool
-            // 或者让 Service 判断 List 是否为空
         }
 
         public async Task DeleteFriendRequestsBetweenAsync(long userId1, long userId2)
@@ -142,8 +141,6 @@ namespace WHUChat.Server.Repositories
         public async Task CreatePrivateRoom(long roomId,long userId1,long userId2) {
             await _context.FriendRelations.Where(fr => fr.UserId == userId1&&fr.FriendId==userId2).ExecuteUpdateAsync(s => s.SetProperty(fr => fr.RoomId, roomId));
             await _context.FriendRelations.Where(fr => fr.UserId == userId2&&fr.FriendId==userId1).ExecuteUpdateAsync(s => s.SetProperty(fr => fr.RoomId, roomId));
-
-
         }
     }
 }

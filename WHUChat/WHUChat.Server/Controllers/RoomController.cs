@@ -101,7 +101,7 @@ namespace WHUChat.Server.Controllers
             catch (InvalidOperationException ex) // 如不是成员
             {
                 _logger.LogWarning(ex, "退出房间操作无效 (Room: {RoomId}, User: {UserId}): {ErrorMessage}", roomId, GetCurrentUserId(), ex.Message);
-                return BadRequest(Result<object>.Fail(ex.Message)); // 400 Bad Request or 404 if preferred
+                return BadRequest(Result<object>.Fail(ex.Message)); // 400 Bad Request 
             }
             catch (Exception ex)
             {

@@ -40,11 +40,29 @@
 
 ### 后端(main分支)
 
+#### 本地启动
+
 ```bash
 cd WHUChat/WHUCHat.Server/
 dotnet restore
 dotnet run
 ```
+
+#### 打包到服务器上
+
+```bash
+cd WHUChat/WHUCHat.Server/
+dotnet publish -c Release -r linux-x64 --self-contained false -o ./publish-linux
+```
+
+将打包好的文件上传到服务器上
+
+```bash
+cd publish-linux
+nohup dotnet WHUChat.Server.dll --urls "http://0.0.0.0:5000"   > output.log 2>&1 &
+```
+
+这时便将服务起起来了
 
 ### 前端(front分支)
 ```bash

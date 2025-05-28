@@ -60,7 +60,7 @@ const serverOptions = {
         url: `${baseURL}/api/fileupload/upload`,
         method: "POST",
         timeout: 7000,
-        withCredentials: true,
+        withCredentials: false,
         headers: {
             Authorization: `Bearer ${token}`, // 如果需要认证
         },

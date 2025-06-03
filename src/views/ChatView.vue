@@ -22,18 +22,14 @@ import RoomChatWindow from '@/components/room/RoomChatWindow.vue'
 
 const selectedFriendId = ref(null)
 const selectedFriendName = ref(null)
-
 const selectedRoomId = ref(null)
-// const selectedRoomName = ref(null)
 const handleSelectFriend = (friend) => {
   selectedFriendId.value = friend.id
   selectedFriendName.value = friend.name 
 }
 
 const handleSelectRoom = (room) => {
-  // console.log('selected room:', room)
   selectedRoomId.value = room.id
-  // selectedRoomName.value = room.name
 }
 
 </script>

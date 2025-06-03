@@ -1,8 +1,5 @@
 <!-- src/views/RoomView.vue -->
 <template>
-  <!-- <el-button class="button" type="primary" @click="showCreateRoomDialog = true">
-    创建房间
-  </el-button> -->
 
   <el-icon size="25">
     <CirclePlus  @click="showCreateRoomDialog = true" />
@@ -12,7 +9,6 @@
     <div class="room-view" v-if="showCreateRoomDialog">
       <CreateRoomForm @room-created="handleRoomCreated" />
       <InviteFriendList v-if="createdRoom" :roomId="createdRoom.id" @invited="handleFriendInvited" />
-      <!-- <RoomChatWindow v-if="createdRoom" :room="createdRoom" /> -->
     </div>
   </el-dialog>
 </template>
@@ -22,7 +18,6 @@ import { ref } from "vue";
 import CreateRoomForm from "@/components/room/CreateRoomForm.vue";
 import InviteFriendList from "@/components/room/InviteFriendList.vue";
 import { ElMessage } from "element-plus";
-// import RoomChatWindow from "@/components/room/RoomChatWindow.vue";
 
 const createdRoom = ref(null);
 const showCreateRoomDialog = ref(false);

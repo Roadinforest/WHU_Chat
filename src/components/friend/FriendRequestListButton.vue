@@ -1,9 +1,5 @@
 <!-- src/components/chat/FriendRequestList.vue -->
 <template>
-  <!-- <el-button class="button" type="primary" @click="showRequestDialog= true">
-    好友申请清单
-  </el-button> -->
-
   <el-icon size="25">
     <Message @click="showRequestDialog= true" />
   </el-icon>
@@ -54,7 +50,6 @@ onMounted(() => {
 
 <style scoped>
 .request-list {
-  /* width: 240px; */
   padding: 10px;
   border-left: 1px solid #ccc;
   background: #f9f9f9;

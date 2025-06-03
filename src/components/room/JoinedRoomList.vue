@@ -28,7 +28,6 @@
             <el-icon>
               <Plus @click="handleAddMember(room.id)" />
             </el-icon>
-
           </div>
 
         </div>
@@ -57,7 +56,6 @@ const handleAddMember = async (roomId) => {
 const fetchRooms = async () => {
   try {
     const res = await RoomService.getJoinedRoom()
-    // rooms.value = res.data
     rooms.value = res.data.filter(room => !room.name.startsWith("Privateroom"));
   } catch (e) {
     console.error('获取加入的房间失败', e)

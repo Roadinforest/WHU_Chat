@@ -12,7 +12,6 @@
         {{ props.mode === 'login' ? '登录' : '注册' }}
       </el-button>
     </div>
-    <!-- </el-form-item> -->
 
   </el-form>
 </template>

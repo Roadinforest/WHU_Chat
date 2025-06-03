@@ -15,7 +15,6 @@ import RoomChatWindow from '@/components/room/RoomChatWindow.vue'
 const selectedRoomId = ref(null)
 const selectedRoomName = ref(null)
 const handleSelectRoom = (room) => {
-  // console.log('selected room:', room)
   selectedRoomId.value = room.id
   selectedRoomName.value = room.name
 }

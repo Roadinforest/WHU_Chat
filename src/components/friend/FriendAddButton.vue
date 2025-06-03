@@ -1,8 +1,5 @@
 <!-- src/components/friend/FriendSearch.vue -->
 <template>
-  <!-- <el-button class="button" type="primary" @click="showAddFriendDialog = true">
-    添加好友
-  </el-button> -->
 
   <el-icon size="25">
     <CirclePlus @click="showAddFriendDialog = true"/>
@@ -36,7 +33,6 @@ import { ElMessage } from 'element-plus'
 
 const searchId = ref('')
 const showAddFriendDialog = ref(false)
-// const searchResult = ref<{ id: number; name: string } | null>(null)
 const searchResult = ref(null)
 
 const searchFriend = async () => {
@@ -53,9 +49,9 @@ const searchFriend = async () => {
 }
 
 const sendFriendRequest = async (targetId) => {
-    try {
-        await FriendService.sendFriendRequest(targetId)
-        ElMessage.success('好友请求已发送！')
+  try {
+    await FriendService.sendFriendRequest(targetId)
+    ElMessage.success('好友请求已发送！')
   } catch (err) {
     console.error('发送失败', err)
     ElMessage.error(err)

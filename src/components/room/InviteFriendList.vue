@@ -50,11 +50,8 @@ watch(() => props.roomId, async () => {
 })
 
 
-
 async function invite() {
   for (const id of selected.value) {
-    // console.log("select id", id);
-    // console.log("room id", props.roomId)
     try {
       await RoomService.inviteFriend(props.roomId, id);
     } catch (e) {

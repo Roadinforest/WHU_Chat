@@ -5,10 +5,6 @@
     <ElDivider />
     <el-button class="button" type="primary" @click="select('friend-list')">好友</el-button>
     <el-button class="button" type="primary" @click="select('chat-room')">聊天室</el-button>
-    <!-- <el-button class="button" type="primary" @click="select('create-chat-room')">聊天室新建</el-button> -->
-    <!-- <el-button class="button" type="primary" @click="select('friend-search')">朋友搜索</el-button> -->
-    <!-- <el-button class="button" type="primary" @click="select('friend-request')">好友请求</el-button> -->
-    <!-- <RoomCreateButton class="button"/> -->
   </aside>
 </template>
 
@@ -28,7 +24,6 @@ const select = (page) => {
 .sidebar {
   margin-top: 10px;
   width: 15vw;
-  /* background-color: rgb(231, 238, 241); */
   padding: 10px;
   height: 95%;
   background-color: rgba(255, 255, 255, 0.3); 

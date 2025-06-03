@@ -113,7 +113,7 @@ onMounted(async () => {
 
 
   await signalRService.startConnection()
-  signalRService.connection.on('ReceiveMessage', receiveHandler)
+  signalRService.connection.on('ReceiveMessage', receiveHandler)    // 每个SignalR都要给它一个相应的处理函数
   signalRService.connection.on('DeleteMessage', deleteHandler)
   await signalRService.entryRoom(props.roomId)
   const res = await RoomService.getHistory(props.roomId)

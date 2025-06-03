@@ -58,7 +58,7 @@ const pondRef = ref(null)
 const serverOptions = {
     process: {
         url: `${baseURL}/api/fileupload/upload`,
-        method: "POST",
+        method: "POST",             
         timeout: 7000,
         withCredentials: false,
         headers: {
@@ -125,9 +125,6 @@ const deleteFile = async (fileLink) => {
 const handleUploadSuccess = (error, file) => {
     if (!error) {
         ElMessage.success("上传成功");
-        // ElNotification.success({
-        //     message: `文件上传成功,文件URL为:${file.serverId}`,
-        // });
 
         // 得到原始文件名
         const originalFileName = file.filename; // 原始文件名

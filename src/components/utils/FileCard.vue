@@ -64,6 +64,7 @@ function getIcon(url) {
 }
 
 function parseFileContent(fileContent) {
+  // format like "filename-(size)"
   const match = fileContent?.match(/^(.*)-\(([^)]+)\)$/);
   if (!match) return { fileName: fileContent, fileSize: null };
   return { fileName: match[1], fileSize: match[2] };

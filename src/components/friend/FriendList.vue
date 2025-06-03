@@ -33,12 +33,10 @@ import FriendAddButton from '../friend/FriendAddButton.vue';
 import FriendRequestListButton from '../friend/FriendRequestListButton.vue';
 
 const emit = defineEmits(['select-friend', 'select-room'])
-const props = defineProps<{ selectedId: number | null }>()
 
-// const friends = ref<Array<{ id: number; username: string; avatarUrl?: string }>>([])
 const friends = ref(null)
 
-const handleSelect = (id: string) => {
+const handleSelect = (id) => {
   const friend = friends.value?.find(f => f.id === Number(id))
   if (friend) {
     emit('select-friend', { id: friend.id, name: friend.username })
@@ -46,7 +44,7 @@ const handleSelect = (id: string) => {
   }
 }
 
-const handleDelete = async (id: number) => {
+const handleDelete = async (id) => {
   await FriendService.deleteFriend(id)
   friends.value = friends.value?.filter(friend => friend.id !== id)
 }
@@ -60,7 +58,6 @@ onMounted(async () => {
 
 <style scoped>
 .friend-list {
-  /* width: 250px; */
   width: 20vw;
   border: 2px solid #ccc;
   border-radius: 20px;
